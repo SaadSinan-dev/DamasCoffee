@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SectionLabelHome extends StatelessWidget {
   final String title;
@@ -9,12 +10,12 @@ class SectionLabelHome extends StatelessWidget {
     return Align(
       alignment: Alignment.centerLeft,
       child: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: EdgeInsets.all(20).r,
         child: Text(
           title,
-          style: const TextStyle(
+          style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 18,
+            fontSize: 18.sp,
             color: Colors.white,
           ),
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 import 'package:tamkeen_mini_project/features/home/data/beans_data.dart';
 
@@ -22,8 +23,8 @@ class SizetFilterState extends State<SizeFilter> {
           onTap: () => setState(() => _selected = i),
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
-            width: 100,
-            height: 40,
+            width: 100.w,
+            height: 40.h,
             decoration: BoxDecoration(
               color: AppColors.searchBox,
               borderRadius: BorderRadius.circular(12),
@@ -38,7 +39,7 @@ class SizetFilterState extends State<SizeFilter> {
               style: TextStyle(
                 color: isSelected ? AppColors.textPrimary : Colors.white60,
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                fontSize: 14,
+                fontSize: 14.sp,
               ),
             ),
           ),

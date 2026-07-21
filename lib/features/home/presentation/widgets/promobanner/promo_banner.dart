@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 import 'package:tamkeen_mini_project/features/home/data/banner_data.dart';
 
 class PromoBanner extends StatelessWidget {
@@ -9,7 +11,7 @@ class PromoBanner extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Padding(
-        padding: const EdgeInsets.all(18),
+        padding: EdgeInsets.all(18).r,
         child: Row(
           children: List.generate(
             promoBanners.length,
@@ -42,10 +44,11 @@ class PromoBannerItem extends StatelessWidget {
       alignment: Alignment.centerRight,
       children: [
         Container(
-          width: 286,
-          height: 170,
+          width: 270.w,
+          height: 160.h,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: AppColors.background, width: 0.8),
+            borderRadius: BorderRadius.circular(20).r,
             image: DecorationImage(
               fit: BoxFit.fill,
               image: AssetImage(banner.image),
@@ -53,12 +56,12 @@ class PromoBannerItem extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.all(18),
+          padding: EdgeInsets.all(18).r,
           child: Text(
             banner.title,
-            style: const TextStyle(
+            style: TextStyle(
               fontFamily: 'PT Sans',
-              fontSize: 16,
+              fontSize: 16.sp,
               fontWeight: FontWeight.w400,
               color: Colors.white,
             ),

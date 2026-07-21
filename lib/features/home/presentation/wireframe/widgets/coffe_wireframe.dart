@@ -1,9 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-/// Skeleton / wireframe placeholder for [BeansList].
-/// Shows a horizontal row of shimmering [BeanCardSkeleton]s.
 class CoffeWireframe extends StatelessWidget {
   final int itemCount;
   const CoffeWireframe({super.key, this.itemCount = 4});
@@ -12,12 +11,12 @@ class CoffeWireframe extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      padding: const EdgeInsets.symmetric(horizontal: 18),
+      padding: EdgeInsets.symmetric(horizontal: 18).r,
       child: Row(
         children: List.generate(
           itemCount,
           (index) => Padding(
-            padding: const EdgeInsets.only(right: 18),
+            padding: EdgeInsets.only(right: 18).r,
             child: const BeanCardSkeleton(),
           ),
         ),
@@ -60,10 +59,10 @@ class _BeanCardSkeletonState extends State<BeanCardSkeleton>
         alignment: Alignment.topCenter,
         children: [
           Container(
-            width: 150,
-            height: 250,
+            width: 150.w,
+            height: 250.h,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(23),
+              borderRadius: BorderRadius.circular(23).r,
               color: Colors.white.withOpacity(0.07),
             ),
           ),
@@ -72,37 +71,37 @@ class _BeanCardSkeletonState extends State<BeanCardSkeleton>
             children: [
               Container(
                 margin: const EdgeInsets.all(12),
-                width: 130,
-                height: 130,
+                width: 130.w,
+                height: 130.h,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(16).r,
                   color: Colors.white.withOpacity(0.10),
                 ),
               ),
               // Name placeholder.
               Padding(
-                padding: const EdgeInsets.only(left: 14),
-                child: _bar(width: 90, height: 12),
+                padding: EdgeInsets.only(left: 14).r,
+                child: _bar(width: 90.w, height: 12.h),
               ),
-              const SizedBox(height: 6),
-              // Roast level placeholder.
+              SizedBox(height: 6.h),
+
               Padding(
-                padding: const EdgeInsets.only(left: 14),
-                child: _bar(width: 60, height: 9),
+                padding: EdgeInsets.only(left: 14).r,
+                child: _bar(width: 60.w, height: 9.h),
               ),
-              const SizedBox(height: 12),
+              SizedBox(height: 12.h),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
+                padding: EdgeInsets.symmetric(horizontal: 12).r,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    _bar(width: 45, height: 14),
+                    _bar(width: 45.w, height: 14.h),
                     SizedBox(
-                      width: 40,
+                      width: 40.w,
                     ),
                     Container(
-                      width: 30,
-                      height: 30,
+                      width: 30.w,
+                      height: 30.h,
                       decoration: BoxDecoration(
                         color: Colors.white.withOpacity(0.10),
                         borderRadius: BorderRadius.circular(8),
@@ -138,8 +137,7 @@ class _BeanCardSkeletonState extends State<BeanCardSkeleton>
                     child: BackdropFilter(
                       filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
                       child: Container(
-                        color:
-                            const Color(0x14FFFFFF), // subtle grey glass tint
+                        color: const Color(0x14FFFFFF),
                       ),
                     ),
                   );
@@ -154,8 +152,8 @@ class _BeanCardSkeletonState extends State<BeanCardSkeleton>
 
   Widget _bar({required double width, required double height}) {
     return Container(
-      width: width,
-      height: height,
+      width: width.w,
+      height: height.h,
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.14),
         borderRadius: BorderRadius.circular(6),

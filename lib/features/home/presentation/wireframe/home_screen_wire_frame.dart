@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 import 'package:tamkeen_mini_project/features/home/presentation/wireframe/widgets/banner_wireframe.dart';
 import 'package:tamkeen_mini_project/features/home/presentation/wireframe/widgets/bean_wireframe.dart';
@@ -24,18 +25,18 @@ class HomeWireframe extends StatelessWidget {
       backgroundColor: AppColors.primary,
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(4, 0, 4, 20),
-          child: const Column(
+          padding: EdgeInsets.fromLTRB(4, 0, 4, 20).r,
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AppSearchBarWireframe(),
-              SizedBox(height: 20),
+              SizedBox(height: 20.h),
               BannerWireframe(),
               SectionLabelHomeWireframe(
                 title: 'Coffee beans',
               ),
               CoffeWireframe(),
-              SizedBox(height: 28),
+              SizedBox(height: 28.h),
               SectionLabelHomeWireframe(
                 title: 'Cappuccino',
               ),

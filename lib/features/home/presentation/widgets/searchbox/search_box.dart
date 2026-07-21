@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 
 class AppSearchBar extends StatelessWidget {
@@ -8,7 +9,7 @@ class AppSearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(30, 20, 30, 10),
+      padding: EdgeInsets.fromLTRB(30, 20, 30, 10).r,
       child: TextField(
         controller: controller,
         style: const TextStyle(color: Colors.white),
@@ -19,7 +20,7 @@ class AppSearchBar extends StatelessWidget {
           filled: true,
           fillColor: AppColors.searchBox.withOpacity(0.5),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(15).r,
             borderSide: BorderSide.none,
           ),
         ),

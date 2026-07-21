@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tamkeen_mini_project/core/routing/app_routes.dart';
+import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 
 class SplashScreen3 extends StatelessWidget {
   const SplashScreen3({super.key});
@@ -25,7 +26,7 @@ class SplashScreen3 extends StatelessWidget {
                     style: TextStyle(
                         fontFamily: 'Inter',
                         fontWeight: FontWeight.w500,
-                        fontSize: 24,
+                        fontSize: 24.sp,
                         color: AppColors.secondary),
                   ),
                   Text(
@@ -33,7 +34,7 @@ class SplashScreen3 extends StatelessWidget {
                     style: TextStyle(
                         fontFamily: 'Inter',
                         fontWeight: FontWeight.w500,
-                        fontSize: 24,
+                        fontSize: 24.sp,
                         color: AppColors.textPrimary),
                   ),
                   Text(
@@ -41,23 +42,23 @@ class SplashScreen3 extends StatelessWidget {
                     style: TextStyle(
                         fontFamily: 'Inter',
                         fontWeight: FontWeight.w500,
-                        fontSize: 24,
+                        fontSize: 24.sp,
                         color: AppColors.secondary),
                   ),
                 ],
               ),
               SizedBox(
-                height: 50,
+                height: 50.h,
               ),
               Image.asset('assets/images/beans-3-.png'),
               SizedBox(
-                height: 40,
+                height: 40.h,
               ),
               Padding(
                 padding: const EdgeInsets.all(25.0),
                 child: SizedBox(
                   width: double.infinity,
-                  height: 55,
+                  height: 55.h,
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(

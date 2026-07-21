@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 import 'package:tamkeen_mini_project/features/home/data/filters_data.dart';
 
@@ -12,10 +13,10 @@ class FilterChips extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 16),
+      padding: EdgeInsets.only(top: 16).r,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: EdgeInsets.symmetric(horizontal: 20).r,
         child: Row(
           children: List.generate(filters.length, (i) {
             final isSelected = selected == i;
@@ -23,12 +24,11 @@ class FilterChips extends StatelessWidget {
               onTap: () => onSelect(i),
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
-                margin: const EdgeInsets.only(right: 10),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                margin: EdgeInsets.only(right: 10).r,
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8).r,
                 decoration: BoxDecoration(
                   color: Colors.white.withOpacity(0.04),
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(20).r,
                 ),
                 child: Column(
                   children: [
@@ -40,15 +40,15 @@ class FilterChips extends StatelessWidget {
                         fontWeight:
                             isSelected ? FontWeight.bold : FontWeight.normal,
                         fontFamily: 'Inter',
-                        fontSize: 14,
+                        fontSize: 14.sp,
                       ),
                     ),
                     SizedBox(
-                      height: 6,
+                      height: 6.h,
                     ),
                     Container(
-                      width: isSelected ? 8 : 0,
-                      height: isSelected ? 8 : 0,
+                      width: isSelected ? 8.w : 0.w,
+                      height: isSelected ? 8.h : 0.h,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
                           color: isSelected

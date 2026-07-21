@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SectionLabel extends StatelessWidget {
   final String title;
@@ -9,12 +10,12 @@ class SectionLabel extends StatelessWidget {
     return Row(
       children: [
         const Icon(Icons.discount, color: Colors.white),
-        const SizedBox(width: 8),
+        SizedBox(width: 8.w),
         Text(
           title,
-          style: const TextStyle(
+          style: TextStyle(
             color: Colors.white,
-            fontSize: 18,
+            fontSize: 18.sp,
             fontWeight: FontWeight.w600,
             fontFamily: 'Inter',
           ),

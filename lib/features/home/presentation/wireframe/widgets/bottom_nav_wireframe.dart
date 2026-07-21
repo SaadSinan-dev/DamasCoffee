@@ -1,10 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 
-/// Skeleton / wireframe placeholder for the bottom navigation bar.
-/// Shows shimmering circle + bar placeholders for each nav item.
 class BottomNavBarWireframe extends StatefulWidget {
   final int itemCount;
   const BottomNavBarWireframe({super.key, this.itemCount = 4});
@@ -22,7 +21,7 @@ class _BottomNavBarWireframeState extends State<BottomNavBarWireframe>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1400),
+      duration: Duration(milliseconds: 1400),
     )..repeat();
   }
 
@@ -37,12 +36,12 @@ class _BottomNavBarWireframeState extends State<BottomNavBarWireframe>
     return Stack(
       children: [
         Container(
-          height: 80,
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+          height: 80.h,
+          padding: EdgeInsets.symmetric(horizontal: 24).r,
           decoration: BoxDecoration(
             color: AppColors.primary,
-            borderRadius: const BorderRadius.vertical(
-              top: Radius.circular(24),
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(24).h,
             ),
           ),
           child: Row(
@@ -65,20 +64,20 @@ class _BottomNavBarWireframeState extends State<BottomNavBarWireframe>
                     return LinearGradient(
                       begin: Alignment(-1.5 + 3.0 * slide, -0.6),
                       end: Alignment(-0.5 + 3.0 * slide, 0.6),
-                      colors: const [
+                      colors: [
                         Colors.transparent,
                         Color(0x2EFFFFFF),
                         Color(0x5CFFFFFF),
                         Color(0x2EFFFFFF),
                         Colors.transparent,
                       ],
-                      stops: const [0.0, 0.35, 0.5, 0.65, 1.0],
+                      stops: [0.0, 0.35, 0.5, 0.65, 1.0],
                     ).createShader(rect);
                   },
                   child: BackdropFilter(
                     filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
                     child: Container(
-                      color: const Color(0x14FFFFFF),
+                      color: Color(0x14FFFFFF),
                     ),
                   ),
                 );
@@ -95,17 +94,17 @@ class _BottomNavBarWireframeState extends State<BottomNavBarWireframe>
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          width: 28,
-          height: 28,
+          width: 28.w,
+          height: 28.h,
           decoration: BoxDecoration(
             color: Colors.white12,
             shape: BoxShape.circle,
           ),
         ),
-        const SizedBox(height: 8),
+        SizedBox(height: 8.h),
         Container(
-          width: 35,
-          height: 6,
+          width: 35.w,
+          height: 6.h,
           decoration: BoxDecoration(
             color: Colors.white12,
             borderRadius: BorderRadius.circular(10),

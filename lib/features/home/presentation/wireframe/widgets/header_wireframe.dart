@@ -1,20 +1,19 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 
 class HomeHeaderWireframe extends StatefulWidget
     implements PreferredSizeWidget {
   const HomeHeaderWireframe({super.key});
 
-  // Approx height: status bar + top padding + content + bottom padding.
-  static const double _kContentHeight =
-      16 + 32 + 24; // top pad + row height + bottom pad
-  static const double _kEstimatedStatusBar = 44; // fallback for most devices
+  static final double _kContentHeight = 16 + 32 + 24;
+  static final double _kEstimatedStatusBar = 44;
 
   @override
   Size get preferredSize =>
-      const Size.fromHeight(_kContentHeight + _kEstimatedStatusBar);
+      Size.fromHeight(_kContentHeight + _kEstimatedStatusBar);
 
   @override
   State<HomeHeaderWireframe> createState() => _HomeHeaderWireframeState();
@@ -29,7 +28,7 @@ class _HomeHeaderWireframeState extends State<HomeHeaderWireframe>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1400),
+      duration: Duration(milliseconds: 1400),
     )..repeat();
   }
 
@@ -42,48 +41,47 @@ class _HomeHeaderWireframeState extends State<HomeHeaderWireframe>
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: EdgeInsets.symmetric(horizontal: 20).r,
       child: ClipRRect(
-        borderRadius: const BorderRadius.only(
-          bottomLeft: Radius.circular(24),
-          bottomRight: Radius.circular(24),
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(24).r,
+          bottomRight: Radius.circular(24).r,
         ),
         child: Stack(
           children: [
             Container(
               width: double.infinity,
-              height: widget.preferredSize.height,
+              height: widget.preferredSize.height.h,
               padding: EdgeInsets.only(
                 top: MediaQuery.of(context).padding.top + 16,
-                bottom: 24,
-                left: 20,
-                right: 20,
+                bottom: 24.h,
+                left: 20.w,
+                right: 20.w,
               ),
               decoration: BoxDecoration(
                 color: AppColors.primary,
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(24),
-                  bottomRight: Radius.circular(24),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(24).r,
+                  bottomRight: Radius.circular(24).r,
                 ),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   // Title placeholder.
-                  _bar(width: 170, height: 20),
+                  _bar(width: 170.w, height: 20.h),
                   // Points-badge placeholder.
                   Container(
-                    width: 70,
-                    height: 32,
+                    width: 70.w,
+                    height: 32.h,
                     decoration: BoxDecoration(
                       color: Colors.white.withOpacity(0.16),
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(16).r,
                     ),
                   ),
                 ],
               ),
             ),
-            // Animated grey glass shimmer sweep.
             Positioned.fill(
               child: IgnorePointer(
                 child: AnimatedBuilder(
@@ -96,20 +94,20 @@ class _HomeHeaderWireframeState extends State<HomeHeaderWireframe>
                         return LinearGradient(
                           begin: Alignment(-1.5 + 3.0 * slide, -0.6),
                           end: Alignment(-0.5 + 3.0 * slide, 0.6),
-                          colors: const [
+                          colors: [
                             Colors.transparent,
                             Color(0x2EFFFFFF),
                             Color(0x5CFFFFFF),
                             Color(0x2EFFFFFF),
                             Colors.transparent,
                           ],
-                          stops: const [0.0, 0.35, 0.5, 0.65, 1.0],
+                          stops: [0.0, 0.35, 0.5, 0.65, 1.0],
                         ).createShader(rect);
                       },
                       child: BackdropFilter(
                         filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
                         child: Container(
-                          color: const Color(0x14FFFFFF),
+                          color: Color(0x14FFFFFF),
                         ),
                       ),
                     );
@@ -125,8 +123,8 @@ class _HomeHeaderWireframeState extends State<HomeHeaderWireframe>
 
   Widget _bar({required double width, required double height}) {
     return Container(
-      width: width,
-      height: height,
+      width: width.w,
+      height: height.h,
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.18),
         borderRadius: BorderRadius.circular(6),

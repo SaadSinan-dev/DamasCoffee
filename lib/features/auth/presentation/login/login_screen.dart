@@ -1,5 +1,6 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tamkeen_mini_project/core/routing/app_routes.dart';
 import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 import 'package:tamkeen_mini_project/core/validators/app_validators.dart';
@@ -44,25 +45,25 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const SizedBox(height: 190),
+                  SizedBox(height: 150.h),
                   Stack(
                     clipBehavior: Clip.none,
                     alignment: Alignment.topCenter,
                     children: [
                       Container(
-                        width: 320,
-                        margin: const EdgeInsets.only(top: 50),
-                        padding: const EdgeInsets.all(30),
+                        width: 320.w,
+                        margin: const EdgeInsets.only(top: 50).r,
+                        padding: const EdgeInsets.all(30).r,
                         decoration: BoxDecoration(
                           color: AppColors.accent,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(10).r,
                         ),
                         child: Form(
                           key: formKey,
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              const SizedBox(height: 60),
+                              SizedBox(height: 60.h),
                               TextFormField(
                                 controller: usernameController,
                                 style: const TextStyle(color: Colors.white),
@@ -78,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                 ),
                               ),
-                              const SizedBox(height: 12),
+                              SizedBox(height: 12.h),
                               TextFormField(
                                 controller: phoneController,
                                 keyboardType: TextInputType.phone,
@@ -115,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                 ),
                               ),
-                              const SizedBox(height: 12),
+                              SizedBox(height: 12.h),
                               TextFormField(
                                 controller: passwordController,
                                 obscureText: isHidden,
@@ -151,10 +152,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       Positioned(
-                        top: 0,
+                        top: 0.h,
                         child: Container(
-                          width: 100,
-                          height: 100,
+                          width: 100.w,
+                          height: 100.h,
                           decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             color: AppColors.surface,
@@ -167,14 +168,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 40),
+                  SizedBox(height: 40.h),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 45),
+                    padding: const EdgeInsets.symmetric(horizontal: 30).r,
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         SizedBox(
-                          height: 55,
+                          height: 55.h,
                           width: double.infinity,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
@@ -192,19 +193,19 @@ class _LoginScreenState extends State<LoginScreen> {
                                 );
                               }
                             },
-                            child: const Text(
+                            child: Text(
                               'Login',
                               style: TextStyle(
                                 fontFamily: 'Inter',
-                                fontSize: 18,
+                                fontSize: 18.sp,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
                           ),
                         ),
-                        const SizedBox(height: 30),
+                        SizedBox(height: 30.h),
                         SizedBox(
-                          height: 55,
+                          height: 55.h,
                           width: double.infinity,
                           child: OutlinedButton(
                             style: OutlinedButton.styleFrom(
@@ -214,7 +215,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 width: 2,
                               ),
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(10).r,
                               ),
                             ),
                             onPressed: () {
@@ -223,11 +224,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                 AppRoutes.register,
                               );
                             },
-                            child: const Text(
+                            child: Text(
                               'Create Account',
                               style: TextStyle(
                                 fontFamily: 'Inter',
-                                fontSize: 18,
+                                fontSize: 18.sp,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -236,7 +237,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 30),
+                  SizedBox(height: 30.h),
                 ],
               ),
             ),

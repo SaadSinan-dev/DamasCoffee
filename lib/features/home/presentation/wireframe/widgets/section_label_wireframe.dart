@@ -1,17 +1,11 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-/// Skeleton / wireframe placeholder for [SectionLabelHome].
-/// Same alignment/padding as the real label, with a shimmering
-/// grey-glass bar standing in for the [title] text.
 class SectionLabelHomeWireframe extends StatefulWidget {
-  /// Kept to mirror [SectionLabelHome]'s API so this widget can be
-  /// swapped in/out as a drop-in replacement. Not shown while loading.
   final String title;
 
-  /// Roughly how wide the placeholder bar should be, to mimic
-  /// different title lengths ("Popular", "Recommended for you", ...).
   final double width;
 
   const SectionLabelHomeWireframe({
@@ -49,20 +43,19 @@ class _SectionLabelHomeWireframeState extends State<SectionLabelHomeWireframe>
     return Align(
       alignment: Alignment.centerLeft,
       child: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: EdgeInsets.all(20).r,
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(6),
+          borderRadius: BorderRadius.circular(6).r,
           child: Stack(
             children: [
               Container(
-                width: widget.width,
-                height: 18,
+                width: widget.width.w,
+                height: 18.h,
                 decoration: BoxDecoration(
                   color: Colors.white.withOpacity(0.14),
-                  borderRadius: BorderRadius.circular(6),
+                  borderRadius: BorderRadius.circular(6).r,
                 ),
               ),
-              // Animated grey glass shimmer sweep.
               Positioned.fill(
                 child: IgnorePointer(
                   child: AnimatedBuilder(
@@ -77,8 +70,8 @@ class _SectionLabelHomeWireframeState extends State<SectionLabelHomeWireframe>
                             end: Alignment(-0.5 + 3.0 * slide, 0.6),
                             colors: const [
                               Colors.transparent,
-                              Color(0x2EFFFFFF), // faint grey-white glass
-                              Color(0x5CFFFFFF), // brighter glass core
+                              Color(0x2EFFFFFF),
+                              Color(0x5CFFFFFF),
                               Color(0x2EFFFFFF),
                               Colors.transparent,
                             ],
@@ -88,8 +81,7 @@ class _SectionLabelHomeWireframeState extends State<SectionLabelHomeWireframe>
                         child: BackdropFilter(
                           filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
                           child: Container(
-                            color: const Color(
-                                0x14FFFFFF), // subtle grey glass tint
+                            color: const Color(0x14FFFFFF),
                           ),
                         ),
                       );

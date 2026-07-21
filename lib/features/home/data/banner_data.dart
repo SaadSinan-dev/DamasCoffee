@@ -14,7 +14,7 @@ const List<PromoBannerData> promoBanners = [
     title: 'Buy 2\nGet 1\nFree',
   ),
   PromoBannerData(
-    image: 'assets/images/row1.png',
+    image: 'assets/images/coffee222.jpg',
     title: 'Buy 2\nGet 1\nFree',
   ),
 ];

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 import 'package:tamkeen_mini_project/features/home/presentation/logic/bloc/home_bloc.dart';
 import 'package:tamkeen_mini_project/features/home/presentation/widgets/beancard/beans_list.dart';
@@ -58,7 +59,7 @@ class _HomeBodyState extends State<HomeBody> {
             BeansList(
               beans: state.beans,
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16.h),
             SectionLabelHome(
               title: state.labels.length > 1 ? state.labels[1].title : '',
             ),

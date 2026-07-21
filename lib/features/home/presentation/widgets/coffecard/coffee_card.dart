@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tamkeen_mini_project/core/routing/app_routes.dart';
+import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 import 'package:tamkeen_mini_project/features/home/data/coffee_data.dart';
 
 class CoffeeCard extends StatelessWidget {
@@ -22,10 +23,10 @@ class CoffeeCard extends StatelessWidget {
         alignment: Alignment.topCenter,
         children: [
           Container(
-            width: 150,
-            height: 250,
+            width: 150.w,
+            height: 250.h,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(20).r,
               color: Colors.white.withOpacity(0.07),
             ),
           ),
@@ -35,11 +36,11 @@ class CoffeeCard extends StatelessWidget {
               Stack(
                 children: [
                   Container(
-                    margin: const EdgeInsets.all(12),
-                    width: 130,
-                    height: 130,
+                    margin: EdgeInsets.all(12).r,
+                    width: 130.w,
+                    height: 130.h,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(23),
+                      borderRadius: BorderRadius.circular(23).r,
                       image: DecorationImage(
                         image: AssetImage(coffee.imagePath),
                         fit: BoxFit.cover,
@@ -47,14 +48,14 @@ class CoffeeCard extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    top: 8,
-                    right: 12,
+                    top: 6.h,
+                    right: 12.w,
                     child: Stack(
                       alignment: Alignment.center,
                       children: [
                         Container(
-                          width: 50,
-                          height: 30,
+                          width: 50.w,
+                          height: 30.h,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.only(
                                 topRight: Radius.circular(32)),
@@ -68,12 +69,12 @@ class CoffeeCard extends StatelessWidget {
                             Text(
                               coffee.rate,
                               style: TextStyle(
-                                  fontSize: 10,
+                                  fontSize: 10.sp,
                                   fontWeight: FontWeight.w600,
                                   color: Colors.white),
                             ),
                             SizedBox(
-                              width: 6,
+                              width: 6.w,
                             ),
                             Icon(
                               Icons.star,
@@ -88,50 +89,50 @@ class CoffeeCard extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 14),
+                padding: EdgeInsets.only(left: 14).r,
                 child: Text(
                   coffee.name,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.w500,
-                    fontSize: 14,
+                    fontSize: 14.sp,
                     color: Colors.white,
                   ),
                 ),
               ),
-              const SizedBox(height: 4),
+              SizedBox(height: 4.h),
               Padding(
-                padding: const EdgeInsets.only(left: 14),
+                padding: EdgeInsets.only(left: 14).r,
                 child: Text(
                   coffee.roastLevel,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.w500,
-                    fontSize: 10,
+                    fontSize: 10.sp,
                     color: Colors.white60,
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
+                padding: EdgeInsets.symmetric(horizontal: 12).r,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
-                        const Text(
+                        Text(
                           '\$',
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
-                            fontSize: 14,
+                            fontSize: 14.sp,
                             color: Color(0xFFD4A853),
                           ),
                         ),
-                        const SizedBox(width: 2),
+                        SizedBox(width: 2.w),
                         Text(
                           coffee.formattedPrice,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontWeight: FontWeight.w700,
-                            fontSize: 14,
+                            fontSize: 14.sp,
                             color: Colors.white,
                           ),
                         ),

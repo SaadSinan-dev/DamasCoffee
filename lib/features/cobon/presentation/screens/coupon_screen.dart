@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 import 'package:tamkeen_mini_project/features/cobon/data/coupon_data.dart';
 import 'package:tamkeen_mini_project/features/cobon/presentation/widgets/coupon_card.dart';
@@ -20,15 +21,15 @@ class CouponScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const CouponHeader(),
-              const SizedBox(height: 54),
-              const CustomerCard(),
-              const SizedBox(height: 28),
-              const SectionLabel(title: 'My Coupons'),
-              const SizedBox(height: 26),
+              CouponHeader(),
+              SizedBox(height: 54.h),
+              CustomerCard(),
+              SizedBox(height: 28.h),
+              SectionLabel(title: 'My Coupons'),
+              SizedBox(height: 26.h),
               ...CouponData.coupons.map(
                 (coupon) => Padding(
-                  padding: const EdgeInsets.only(bottom: 16),
+                  padding: EdgeInsets.only(bottom: 16).r,
                   child: CouponCard(coupon: coupon),
                 ),
               ),

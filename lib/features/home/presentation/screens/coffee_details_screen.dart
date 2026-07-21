@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 import 'package:tamkeen_mini_project/features/home/data/coffee_data.dart';
 import 'package:tamkeen_mini_project/features/home/presentation/widgets/filter/size_filter.dart';
@@ -62,16 +63,16 @@ class _HeroImage extends StatelessWidget {
         children: [
           _BackgroundImage(imagePath: coffee.imagePath, height: imageHeight),
           Positioned(
-            top: 50,
-            left: 16,
-            right: 16,
+            top: 50.h,
+            left: 16.w,
+            right: 16.w,
             child:
                 _TopBar(isFavorite: isFavorite, onFavoriteTap: onFavoriteTap),
           ),
           Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
+            bottom: 0.h,
+            left: 0.w,
+            right: 0.w,
             child: _BlurredInfoCard(coffee: coffee),
           ),
         ],
@@ -120,8 +121,7 @@ class _TopBar extends StatelessWidget {
         _CircleIconButton(
           gradient: _gradient,
           onPressed: () => Navigator.pop(context),
-          icon: const Icon(Icons.arrow_back_ios_new,
-              color: Colors.white, size: 20),
+          icon: Icon(Icons.arrow_back_ios_new, color: Colors.white, size: 20.r),
         ),
         _CircleIconButton(
           gradient: _gradient,
@@ -129,7 +129,7 @@ class _TopBar extends StatelessWidget {
           icon: Icon(
             isFavorite ? Icons.favorite : Icons.favorite_border,
             color: isFavorite ? Colors.red : Colors.grey,
-            size: 24,
+            size: 24.r,
           ),
         ),
       ],
@@ -167,14 +167,14 @@ class _BlurredInfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: const BorderRadius.only(
-        topLeft: Radius.circular(25),
-        topRight: Radius.circular(25),
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(25).r,
+        topRight: Radius.circular(25).r,
       ),
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
         child: Container(
-          padding: const EdgeInsets.all(20),
+          padding: EdgeInsets.all(20).r,
           color: Colors.black.withOpacity(0.4),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -200,28 +200,28 @@ class _CoffeeInfo extends StatelessWidget {
       children: [
         Text(
           coffee.name,
-          style: const TextStyle(
+          style: TextStyle(
             color: Colors.white,
-            fontSize: 22,
+            fontSize: 22.sp,
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 4),
+        SizedBox(height: 4.h),
         Text(
           coffee.from,
           style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 12),
         ),
-        const SizedBox(height: 22),
+        SizedBox(height: 22.h),
         Row(
           children: [
-            const Icon(Icons.star, color: AppColors.textPrimary, size: 24),
-            const SizedBox(width: 4),
+            Icon(Icons.star, color: AppColors.textPrimary, size: 24.r),
+            SizedBox(width: 4.w),
             Text(
               coffee.rate,
-              style: const TextStyle(
+              style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
-                fontSize: 16,
+                fontSize: 16.sp,
               ),
             ),
           ],
@@ -242,11 +242,11 @@ class _CoffeeBadges extends StatelessWidget {
         Row(
           children: [
             _IconBadge(icon: Icons.coffee_sharp),
-            const SizedBox(width: 12),
+            SizedBox(width: 12.w),
             _IconBadge(icon: Icons.location_on),
           ],
         ),
-        const SizedBox(height: 12),
+        SizedBox(height: 12.h),
         _LabelBadge(label: roastLevel),
       ],
     );
@@ -263,10 +263,10 @@ class _IconBadge extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         Container(
-          width: 55,
-          height: 55,
+          width: 55.w,
+          height: 55.h,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(10).r,
             color: Colors.grey[900],
           ),
         ),
@@ -286,10 +286,10 @@ class _LabelBadge extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         Container(
-          width: 130,
-          height: 50,
+          width: 130.w,
+          height: 50.h,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(10).r,
             color: Colors.grey[900],
           ),
         ),
@@ -310,28 +310,28 @@ class _DetailsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(24),
+      padding: EdgeInsets.all(24).r,
       color: AppColors.primary,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const _SectionLabel(title: 'Description'),
-          const SizedBox(height: 12),
+          SizedBox(height: 12.h),
           Text(
             coffee.description,
             style: TextStyle(
               color: Colors.white.withOpacity(0.8),
-              fontSize: 14,
+              fontSize: 14.sp,
               height: 1.5,
             ),
           ),
-          const SizedBox(height: 18),
-          const _SectionLabel(title: 'Size'),
-          const SizedBox(height: 16),
-          const SizeFilter(),
-          const SizedBox(height: 24),
+          SizedBox(height: 18.h),
+          _SectionLabel(title: 'Size'),
+          SizedBox(height: 16.h),
+          SizeFilter(),
+          SizedBox(height: 24.h),
           _PriceAndCart(coffee: coffee),
-          const SizedBox(height: 20),
+          SizedBox(height: 20.h),
         ],
       ),
     );
@@ -367,26 +367,26 @@ class _PriceAndCart extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               'Price',
-              style: TextStyle(color: Colors.white70, fontSize: 16),
+              style: TextStyle(color: Colors.white70, fontSize: 16.sp),
             ),
             Row(
               children: [
-                const Text(
+                Text(
                   '\$',
                   style: TextStyle(
                     color: AppColors.textPrimary,
-                    fontSize: 22,
+                    fontSize: 22.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(width: 8),
+                SizedBox(width: 8.w),
                 Text(
                   coffee.price.toStringAsFixed(2),
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: Colors.white,
-                    fontSize: 22,
+                    fontSize: 22.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -396,9 +396,9 @@ class _PriceAndCart extends StatelessWidget {
         ),
         ElevatedButton(
           style: ElevatedButton.styleFrom(
-            fixedSize: const Size(180, 55),
+            fixedSize: Size(170.w, 50.h),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(20).r,
             ),
             foregroundColor: AppColors.secondary,
             backgroundColor: AppColors.textPrimary,
@@ -406,10 +406,10 @@ class _PriceAndCart extends StatelessWidget {
           onPressed: () {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: const Row(
+                content: Row(
                   children: [
                     Icon(Icons.shopping_cart, color: AppColors.primary),
-                    SizedBox(width: 8),
+                    SizedBox(width: 8.w),
                     Text(
                       "Added to Cart!",
                       style: TextStyle(color: AppColors.primary),
@@ -425,11 +425,11 @@ class _PriceAndCart extends StatelessWidget {
               ),
             );
           },
-          child: const Text(
+          child: Text(
             "Add to Cart",
             style: TextStyle(
               fontWeight: FontWeight.w600,
-              fontSize: 16,
+              fontSize: 16.sp,
               color: AppColors.secondary,
             ),
           ),

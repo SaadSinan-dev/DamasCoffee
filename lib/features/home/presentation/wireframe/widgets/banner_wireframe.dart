@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BannerWireframe extends StatelessWidget {
   const BannerWireframe({super.key});
@@ -10,11 +11,11 @@ class BannerWireframe extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Padding(
-        padding: const EdgeInsets.all(18),
+        padding: EdgeInsets.all(18).r,
         child: Row(
-          children: const [
+          children: [
             PromoBannerItemSkeleton(),
-            SizedBox(width: 20),
+            SizedBox(width: 20.w),
             PromoBannerItemSkeleton(),
           ],
         ),
@@ -40,7 +41,7 @@ class _PromoBannerItemSkeletonState extends State<PromoBannerItemSkeleton>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1400),
+      duration: Duration(milliseconds: 1400),
     )..repeat();
   }
 
@@ -53,11 +54,11 @@ class _PromoBannerItemSkeletonState extends State<PromoBannerItemSkeleton>
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(20),
+      borderRadius: BorderRadius.circular(20).r,
       child: Container(
-        width: 286,
-        height: 170,
-        decoration: const BoxDecoration(
+        width: 286.w,
+        height: 170.h,
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -67,20 +68,19 @@ class _PromoBannerItemSkeletonState extends State<PromoBannerItemSkeleton>
         child: Stack(
           children: [
             Padding(
-              padding: const EdgeInsets.all(18),
+              padding: EdgeInsets.all(18).r,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  _bar(width: 70, height: 14),
-                  const SizedBox(height: 10),
-                  _bar(width: 60, height: 14),
-                  const SizedBox(height: 10),
-                  _bar(width: 80, height: 14),
+                  _bar(width: 70.w, height: 14.h),
+                  SizedBox(height: 10.h),
+                  _bar(width: 60.w, height: 14.h),
+                  SizedBox(height: 10),
+                  _bar(width: 80.w, height: 14.h),
                 ],
               ),
             ),
-            // Animated grey glass shimmer sweep.
             Positioned.fill(
               child: AnimatedBuilder(
                 animation: _controller,
@@ -92,20 +92,20 @@ class _PromoBannerItemSkeletonState extends State<PromoBannerItemSkeleton>
                       return LinearGradient(
                         begin: Alignment(-1.5 + 3.0 * slide, -0.3),
                         end: Alignment(-0.5 + 3.0 * slide, 0.3),
-                        colors: const [
+                        colors: [
                           Colors.transparent,
                           Color(0x33FFFFFF),
                           Color(0x66FFFFFF),
                           Color(0x33FFFFFF),
                           Colors.transparent,
                         ],
-                        stops: const [0.0, 0.35, 0.5, 0.65, 1.0],
+                        stops: [0.0, 0.35, 0.5, 0.65, 1.0],
                       ).createShader(rect);
                     },
                     child: BackdropFilter(
                       filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
                       child: Container(
-                        color: const Color(0x1AFFFFFF),
+                        color: Color(0x1AFFFFFF),
                       ),
                     ),
                   );
@@ -120,8 +120,8 @@ class _PromoBannerItemSkeletonState extends State<PromoBannerItemSkeleton>
 
   Widget _bar({required double width, required double height}) {
     return Container(
-      width: width,
-      height: height,
+      width: width.w,
+      height: height.h,
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.18),
         borderRadius: BorderRadius.circular(6),

@@ -1,9 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppSearchBarWireframe extends StatefulWidget {
-  const AppSearchBarWireframe({super.key});
+  AppSearchBarWireframe({super.key});
 
   @override
   State<AppSearchBarWireframe> createState() => _AppSearchBarWireframeState();
@@ -18,7 +19,7 @@ class _AppSearchBarWireframeState extends State<AppSearchBarWireframe>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1400),
+      duration: Duration(milliseconds: 1400),
     )..repeat();
   }
 
@@ -31,37 +32,35 @@ class _AppSearchBarWireframeState extends State<AppSearchBarWireframe>
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(30, 20, 30, 10),
+      padding: EdgeInsets.fromLTRB(30, 20, 30, 10).r,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(15).r,
         child: Stack(
           children: [
             Container(
-              height: 52,
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              height: 52.h,
+              width: double.infinity.w,
+              padding: EdgeInsets.symmetric(horizontal: 16).r,
               decoration: BoxDecoration(
                 color: Colors.white12,
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Row(
                 children: [
-                  // Search icon placeholder.
                   Container(
-                    width: 20,
-                    height: 20,
+                    width: 20.w,
+                    height: 20.h,
                     decoration: BoxDecoration(
                       color: Colors.white.withOpacity(0.20),
                       shape: BoxShape.circle,
                     ),
                   ),
-                  const SizedBox(width: 12),
+                  SizedBox(width: 12.w),
                   // Hint-text placeholder.
                   _bar(width: 140, height: 12),
                 ],
               ),
             ),
-            // Animated grey glass shimmer sweep.
             Positioned.fill(
               child: IgnorePointer(
                 child: AnimatedBuilder(
@@ -74,20 +73,20 @@ class _AppSearchBarWireframeState extends State<AppSearchBarWireframe>
                         return LinearGradient(
                           begin: Alignment(-1.5 + 3.0 * slide, -0.6),
                           end: Alignment(-0.5 + 3.0 * slide, 0.6),
-                          colors: const [
+                          colors: [
                             Colors.transparent,
                             Color(0x2EFFFFFF),
                             Color(0x5CFFFFFF),
                             Color(0x2EFFFFFF),
                             Colors.transparent,
                           ],
-                          stops: const [0.0, 0.35, 0.5, 0.65, 1.0],
+                          stops: [0.0, 0.35, 0.5, 0.65, 1.0],
                         ).createShader(rect);
                       },
                       child: BackdropFilter(
                         filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
                         child: Container(
-                          color: const Color(0x14FFFFFF),
+                          color: Color(0x14FFFFFF),
                         ),
                       ),
                     );
@@ -103,8 +102,8 @@ class _AppSearchBarWireframeState extends State<AppSearchBarWireframe>
 
   Widget _bar({required double width, required double height}) {
     return Container(
-      width: width,
-      height: height,
+      width: width.w,
+      height: height.h,
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.14),
         borderRadius: BorderRadius.circular(6),

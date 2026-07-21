@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tamkeen_mini_project/core/routing/app_routes.dart';
+import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 import 'package:tamkeen_mini_project/features/home/data/beans_data.dart';
 
 class BeanCard extends StatelessWidget {
@@ -17,10 +18,10 @@ class BeanCard extends StatelessWidget {
         alignment: Alignment.topCenter,
         children: [
           Container(
-            width: 150,
-            height: 250,
+            width: 150.w,
+            height: 250.h,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(23),
+              borderRadius: BorderRadius.circular(23).r,
               color: Colors.white.withOpacity(0.07),
             ),
           ),
@@ -28,9 +29,9 @@ class BeanCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                margin: const EdgeInsets.all(12),
-                width: 130,
-                height: 130,
+                margin: EdgeInsets.all(10).r,
+                width: 130.w,
+                height: 130.h,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(bean.imagePath),
@@ -41,60 +42,60 @@ class BeanCard extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 14),
                 child: Text(
                   bean.name,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.w500,
-                    fontSize: 14,
+                    fontSize: 14.sp,
                     color: Colors.white,
                   ),
                 ),
               ),
-              const SizedBox(height: 4),
+              SizedBox(height: 4.h),
               Padding(
-                padding: const EdgeInsets.only(left: 14),
+                padding: EdgeInsets.only(left: 14).r,
                 child: Text(
                   bean.roastLevel,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.w500,
-                    fontSize: 10,
+                    fontSize: 10.sp,
                     color: Colors.white60,
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
+                padding: EdgeInsets.symmetric(horizontal: 12).r,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
-                        const Text(
+                        Text(
                           '\$',
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
-                            fontSize: 14,
+                            fontSize: 14.sp,
                             color: Color(0xFFD4A853),
                           ),
                         ),
-                        const SizedBox(width: 2),
+                        SizedBox(width: 2.w),
                         Text(
                           bean.price.toStringAsFixed(2),
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontWeight: FontWeight.w700,
-                            fontSize: 14,
+                            fontSize: 14.sp,
                             color: Colors.white,
                           ),
                         ),
                       ],
                     ),
                     SizedBox(
-                      width: 50,
+                      width: 50.w,
                     ),
                     GestureDetector(
                       onTap: () {},
                       child: Container(
-                        width: 30,
-                        height: 30,
+                        width: 30.w,
+                        height: 30.h,
                         decoration: BoxDecoration(
                           color: AppColors.textPrimary,
                           borderRadius: BorderRadius.circular(8),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tamkeen_mini_project/features/home/data/beans_data.dart';
 import 'package:tamkeen_mini_project/features/home/presentation/widgets/beancard/bean_card.dart';
 
@@ -9,11 +10,11 @@ class BeansList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      padding: const EdgeInsets.symmetric(horizontal: 18),
+      padding: EdgeInsets.symmetric(horizontal: 18).r,
       child: Row(
         children: beans
             .map((bean) => Padding(
-                  padding: const EdgeInsets.only(right: 18),
+                  padding: EdgeInsets.only(right: 18).r,
                   child: BeanCard(bean: bean),
                 ))
             .toList(),

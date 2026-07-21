@@ -1,6 +1,7 @@
 // features/cobon/presentation/widgets/coupon_card.dart
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 import 'package:tamkeen_mini_project/features/cobon/data/coupon_data.dart';
 
@@ -16,10 +17,10 @@ class CouponCard extends StatelessWidget {
       children: [
         Container(
           width: double.infinity,
-          padding: const EdgeInsets.all(20),
+          padding: EdgeInsets.all(20).r,
           decoration: BoxDecoration(
             color: Colors.white.withOpacity(0.07),
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(20).r,
             border: Border.all(color: Colors.white24, width: 1),
           ),
           child: Row(
@@ -29,20 +30,20 @@ class CouponCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 5),
+                    padding: EdgeInsets.only(left: 5).r,
                     child: Text(
                       coupon.description,
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: AppColors.background,
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),
-                  const SizedBox(height: 30),
+                  SizedBox(height: 30.h),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      fixedSize: const Size(150, 30),
+                      fixedSize: Size(140.w, 30.h),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -53,16 +54,16 @@ class CouponCard extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text(
+                        Text(
                           'more info',
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
-                            fontSize: 16,
+                            fontSize: 16.sp,
                             color: AppColors.secondary,
                           ),
                         ),
-                        const SizedBox(width: 12),
-                        const Icon(
+                        SizedBox(width: 8.h),
+                        Icon(
                           Icons.arrow_forward_ios_outlined,
                           color: AppColors.primary,
                         ),
@@ -75,20 +76,18 @@ class CouponCard extends StatelessWidget {
             ],
           ),
         ),
-
-        // Badge (only if badgeImagePath is provided)
         if (coupon.badgeImagePath != null)
           Padding(
-            padding: const EdgeInsets.only(top: 22),
+            padding: EdgeInsets.only(top: 22).r,
             child: Stack(
               alignment: Alignment.center,
               children: [
                 Image.asset(coupon.badgeImagePath!),
                 Text(
                   coupon.discount,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.w600,
-                    fontSize: 15,
+                    fontSize: 15.sp,
                     color: AppColors.primary,
                   ),
                 ),

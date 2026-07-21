@@ -15,6 +15,7 @@ class CouponScreen extends StatelessWidget {
       backgroundColor: AppColors.primary,
       body: SafeArea(
         child: SingleChildScrollView(
+          physics: ClampingScrollPhysics(),
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

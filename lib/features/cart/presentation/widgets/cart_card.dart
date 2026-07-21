@@ -6,8 +6,13 @@ import 'package:tamkeen_mini_project/features/cart/data/cart_data.dart';
 
 class CartCard extends StatefulWidget {
   final CartItemModel item;
+  final VoidCallback onRemove;
 
-  const CartCard({super.key, required this.item});
+  const CartCard({
+    super.key,
+    required this.item,
+    required this.onRemove,
+  });
 
   @override
   State<CartCard> createState() => _CartCardState();
@@ -19,6 +24,8 @@ class _CartCardState extends State<CartCard> {
   void _decrement() {
     if (widget.item.quantity > 1) {
       setState(() => widget.item.quantity--);
+    } else {
+      widget.onRemove();
     }
   }
 
@@ -67,7 +74,6 @@ class _CartCardState extends State<CartCard> {
                   overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 8),
-                //Roust
                 Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 10,
@@ -109,13 +115,11 @@ class _CartCardState extends State<CartCard> {
                             fontFamily: 'Inter',
                           ),
                         ),
-                        SizedBox(
-                          width: 6,
-                        ),
+                        const SizedBox(width: 6),
                         Text(
                           (widget.item.price * widget.item.quantity)
                               .toStringAsFixed(2),
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
@@ -124,82 +128,40 @@ class _CartCardState extends State<CartCard> {
                         ),
                       ],
                     ),
-                    Column(
-                      children: [
-                        Row(
-                          children: [
-                            _QuantityButton(
-                              icon: Icons.remove,
-                              onTap: _decrement,
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
-                              child: Container(
-                                width: 50,
-                                height: 30,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    border: Border.all(
-                                        color: AppColors.textPrimary)),
-                                child: Align(
-                                  alignment: Alignment.center,
-                                  child: Text(
-                                    '${widget.item.quantity}',
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            _QuantityButton(
-                              icon: Icons.add,
-                              onTap: _increment,
-                            ),
-                          ],
+                  ],
+                ),
+                const SizedBox(height: 12),
+                Row(
+                  children: [
+                    _QuantityButton(
+                      icon: Icons.remove,
+                      onTap: _decrement,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Container(
+                        width: 50,
+                        height: 30,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: AppColors.textPrimary),
                         ),
-                        SizedBox(
-                          height: 20,
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            '${widget.item.quantity}',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                         ),
-                        Row(
-                          children: [
-                            _QuantityButton(
-                              icon: Icons.remove,
-                              onTap: _decrement,
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
-                              child: Container(
-                                width: 50,
-                                height: 30,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    border: Border.all(
-                                        color: AppColors.textPrimary)),
-                                child: Align(
-                                  alignment: Alignment.center,
-                                  child: Text(
-                                    '${widget.item.quantity}',
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            _QuantityButton(
-                              icon: Icons.add,
-                              onTap: _increment,
-                            ),
-                          ],
-                        ),
-                      ],
+                      ),
+                    ),
+                    _QuantityButton(
+                      icon: Icons.add,
+                      onTap: _increment,
                     ),
                   ],
                 ),

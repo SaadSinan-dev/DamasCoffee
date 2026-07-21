@@ -1,7 +1,8 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 import 'package:tamkeen_mini_project/core/routing/app_routes.dart';
+import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
+import 'package:tamkeen_mini_project/core/validators/app_validators.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -72,12 +73,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               TextFormField(
                                 controller: usernameController,
                                 style: const TextStyle(color: Colors.white),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Username required';
-                                  }
-                                  return null;
-                                },
+                                validator: Validators.fullName,
                                 decoration: const InputDecoration(
                                   labelText: 'Username',
                                   labelStyle: TextStyle(color: Colors.white),
@@ -94,15 +90,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 controller: emailController,
                                 keyboardType: TextInputType.emailAddress,
                                 style: const TextStyle(color: Colors.white),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Email required';
-                                  }
-                                  if (!value.contains('@')) {
-                                    return 'Enter a valid email';
-                                  }
-                                  return null;
-                                },
+                                validator: Validators.email,
                                 decoration: const InputDecoration(
                                   labelText: 'Email',
                                   labelStyle: TextStyle(color: Colors.white),
@@ -119,12 +107,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 controller: phoneController,
                                 keyboardType: TextInputType.phone,
                                 style: const TextStyle(color: Colors.white),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Phone required';
-                                  }
-                                  return null;
-                                },
+                                validator: Validators.phone,
                                 decoration: InputDecoration(
                                   labelText: 'Phone Number',
                                   labelStyle:
@@ -161,15 +144,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 controller: passwordController,
                                 obscureText: isHidden,
                                 style: const TextStyle(color: Colors.white),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Password required';
-                                  }
-                                  if (value.length < 6) {
-                                    return 'Minimum 6 characters';
-                                  }
-                                  return null;
-                                },
+                                validator: Validators.passwordStrength,
                                 decoration: InputDecoration(
                                   labelText: 'Password',
                                   labelStyle:
@@ -200,15 +175,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 controller: confirmPasswordController,
                                 obscureText: isConfirmHidden,
                                 style: const TextStyle(color: Colors.white),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Please confirm your password';
-                                  }
-                                  if (value != passwordController.text) {
-                                    return 'Passwords do not match';
-                                  }
-                                  return null;
-                                },
+                                validator: Validators.registerConfirmPassword(
+                                  passwordController.text,
+                                ),
                                 decoration: InputDecoration(
                                   labelText: 'Confirm Password',
                                   labelStyle:

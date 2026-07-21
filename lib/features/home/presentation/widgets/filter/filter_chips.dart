@@ -27,20 +27,35 @@ class FilterChips extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                 decoration: BoxDecoration(
-                  color: isSelected
-                      ? AppColors.textPrimary.withOpacity(0.3)
-                      : Colors.white.withOpacity(0.04),
+                  color: Colors.white.withOpacity(0.04),
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: Text(
-                  filters[i],
-                  style: TextStyle(
-                    color: isSelected ? AppColors.textPrimary : Colors.white60,
-                    fontWeight:
-                        isSelected ? FontWeight.bold : FontWeight.normal,
-                    fontFamily: 'Inter',
-                    fontSize: 14,
-                  ),
+                child: Column(
+                  children: [
+                    Text(
+                      filters[i],
+                      style: TextStyle(
+                        color:
+                            isSelected ? AppColors.textPrimary : Colors.white60,
+                        fontWeight:
+                            isSelected ? FontWeight.bold : FontWeight.normal,
+                        fontFamily: 'Inter',
+                        fontSize: 14,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 6,
+                    ),
+                    Container(
+                      width: isSelected ? 8 : 0,
+                      height: isSelected ? 8 : 0,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: isSelected
+                              ? AppColors.textPrimary
+                              : Colors.white60),
+                    )
+                  ],
                 ),
               ),
             );

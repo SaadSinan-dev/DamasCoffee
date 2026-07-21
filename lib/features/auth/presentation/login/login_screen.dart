@@ -2,6 +2,7 @@ import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:tamkeen_mini_project/core/routing/app_routes.dart';
 import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
+import 'package:tamkeen_mini_project/core/validators/app_validators.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -65,12 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               TextFormField(
                                 controller: usernameController,
                                 style: const TextStyle(color: Colors.white),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Username required';
-                                  }
-                                  return null;
-                                },
+                                validator: Validators.fullName,
                                 decoration: const InputDecoration(
                                   labelText: 'Username',
                                   labelStyle: TextStyle(color: Colors.white),
@@ -87,12 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 controller: phoneController,
                                 keyboardType: TextInputType.phone,
                                 style: const TextStyle(color: Colors.white),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Phone required';
-                                  }
-                                  return null;
-                                },
+                                validator: Validators.phone,
                                 decoration: InputDecoration(
                                   labelText: 'Phone Number',
                                   labelStyle:
@@ -129,12 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 controller: passwordController,
                                 obscureText: isHidden,
                                 style: const TextStyle(color: Colors.white),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Password required';
-                                  }
-                                  return null;
-                                },
+                                validator: Validators.loginPassword,
                                 decoration: InputDecoration(
                                   labelText: 'Password',
                                   labelStyle:

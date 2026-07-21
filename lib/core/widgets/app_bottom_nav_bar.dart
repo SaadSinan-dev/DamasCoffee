@@ -17,6 +17,7 @@ class AppBottomNavBar extends StatelessWidget {
       type: BottomNavigationBarType.fixed,
       showSelectedLabels: false,
       showUnselectedLabels: false,
+      elevation: 0,
       selectedItemColor: AppColors.textPrimary,
       unselectedItemColor: Colors.grey,
       backgroundColor: const Color.fromARGB(255, 7, 39, 36),

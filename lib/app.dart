@@ -26,7 +26,7 @@ class App extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        initialRoute: AppRoutes.home,
+        initialRoute: AppRoutes.splash1,
         routes: AppRoutes.routes,
         locale: const Locale("en"),
         supportedLocales: const [

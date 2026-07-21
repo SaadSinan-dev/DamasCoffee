@@ -202,7 +202,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               if (formKey.currentState!.validate()) {
                                 Navigator.pushReplacementNamed(
                                   context,
-                                  AppRoutes.homewireframe,
+                                  AppRoutes.home,
                                 );
                               }
                             },

@@ -12,6 +12,9 @@ class HomeState {
   final List<CoffeeProduct> coffees;
   final List<HomeSectionLabel> labels;
 
+  final RequestStatus bottomNavStatus;
+  final int currentIndex;
+
   final String? errorMessage;
 
   const HomeState({
@@ -20,6 +23,8 @@ class HomeState {
     this.beans = const [],
     this.coffees = const [],
     this.labels = const [],
+    this.bottomNavStatus = RequestStatus.initial,
+    this.currentIndex = 0,
     this.errorMessage,
   });
 
@@ -29,6 +34,8 @@ class HomeState {
     List<BeanProduct>? beans,
     List<CoffeeProduct>? coffees,
     List<HomeSectionLabel>? labels,
+    RequestStatus? bottomNavStatus,
+    int? currentIndex,
     String? errorMessage,
   }) {
     return HomeState(
@@ -37,6 +44,8 @@ class HomeState {
       beans: beans ?? this.beans,
       coffees: coffees ?? this.coffees,
       labels: labels ?? this.labels,
+      bottomNavStatus: bottomNavStatus ?? this.bottomNavStatus,
+      currentIndex: currentIndex ?? this.currentIndex,
       errorMessage: errorMessage ?? this.errorMessage,
     );
   }

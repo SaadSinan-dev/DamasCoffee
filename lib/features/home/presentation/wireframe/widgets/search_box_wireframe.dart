@@ -1,26 +1,15 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 
-class HomeHeaderWireframe extends StatefulWidget
-    implements PreferredSizeWidget {
-  const HomeHeaderWireframe({super.key});
-
-  // Approx height: status bar + top padding + content + bottom padding.
-  static const double _kContentHeight =
-      16 + 32 + 24; // top pad + row height + bottom pad
-  static const double _kEstimatedStatusBar = 44; // fallback for most devices
+class AppSearchBarWireframe extends StatefulWidget {
+  const AppSearchBarWireframe({super.key});
 
   @override
-  Size get preferredSize =>
-      const Size.fromHeight(_kContentHeight + _kEstimatedStatusBar);
-
-  @override
-  State<HomeHeaderWireframe> createState() => _HomeHeaderWireframeState();
+  State<AppSearchBarWireframe> createState() => _AppSearchBarWireframeState();
 }
 
-class _HomeHeaderWireframeState extends State<HomeHeaderWireframe>
+class _AppSearchBarWireframeState extends State<AppSearchBarWireframe>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
 
@@ -42,44 +31,33 @@ class _HomeHeaderWireframeState extends State<HomeHeaderWireframe>
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.fromLTRB(30, 20, 30, 10),
       child: ClipRRect(
-        borderRadius: const BorderRadius.only(
-          bottomLeft: Radius.circular(24),
-          bottomRight: Radius.circular(24),
-        ),
+        borderRadius: BorderRadius.circular(15),
         child: Stack(
           children: [
             Container(
+              height: 52,
               width: double.infinity,
-              height: widget.preferredSize.height,
-              padding: EdgeInsets.only(
-                top: MediaQuery.of(context).padding.top + 16,
-                bottom: 24,
-                left: 20,
-                right: 20,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               decoration: BoxDecoration(
-                color: AppColors.primary,
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(24),
-                  bottomRight: Radius.circular(24),
-                ),
+                color: Colors.white12,
+                borderRadius: BorderRadius.circular(15),
               ),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  // Title placeholder.
-                  _bar(width: 170, height: 20),
-                  // Points-badge placeholder.
+                  // Search icon placeholder.
                   Container(
-                    width: 70,
-                    height: 32,
+                    width: 20,
+                    height: 20,
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.16),
-                      borderRadius: BorderRadius.circular(16),
+                      color: Colors.white.withOpacity(0.20),
+                      shape: BoxShape.circle,
                     ),
                   ),
+                  const SizedBox(width: 12),
+                  // Hint-text placeholder.
+                  _bar(width: 140, height: 12),
                 ],
               ),
             ),
@@ -128,7 +106,7 @@ class _HomeHeaderWireframeState extends State<HomeHeaderWireframe>
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.18),
+        color: Colors.white.withOpacity(0.14),
         borderRadius: BorderRadius.circular(6),
       ),
     );

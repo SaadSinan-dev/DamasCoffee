@@ -18,9 +18,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     required this.getBannersUseCase,
     required this.getBeansUseCase,
     required this.getCoffeesUseCase,
-  }) : super(const HomeState()) {
+  }) : super(HomeState()) {
     on<LoadHomeEvent>(_onLoadHome);
+    on<ChangeBottomNavEvent>(_onChangeBottomNav);
   }
+
   Future<void> _onLoadHome(
     LoadHomeEvent event,
     Emitter<HomeState> emit,
@@ -28,11 +30,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     emit(
       state.copyWith(
         status: RequestStatus.loading,
+        bottomNavStatus: RequestStatus.loading,
       ),
     );
 
     try {
-      await Future.delayed(const Duration(seconds: 10));
+      await Future.delayed(
+        const Duration(seconds: 5),
+      );
 
       final banners = await getBannersUseCase();
       final beans = await getBeansUseCase();
@@ -41,6 +46,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       emit(
         state.copyWith(
           status: RequestStatus.success,
+          bottomNavStatus: RequestStatus.success,
           banners: banners,
           beans: beans,
           coffees: coffees,
@@ -51,9 +57,21 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       emit(
         state.copyWith(
           status: RequestStatus.failure,
+          bottomNavStatus: RequestStatus.failure,
           errorMessage: ErrorMessages.server,
         ),
       );
     }
+  }
+
+  void _onChangeBottomNav(
+    ChangeBottomNavEvent event,
+    Emitter<HomeState> emit,
+  ) {
+    emit(
+      state.copyWith(
+        currentIndex: event.index,
+      ),
+    );
   }
 }

@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tamkeen_mini_project/core/enums/request_status.dart';
+import 'package:tamkeen_mini_project/core/widgets/app_bottom_nav_bar.dart';
 import 'package:tamkeen_mini_project/features/cart/presentation/screens/cart_screen.dart';
 import 'package:tamkeen_mini_project/features/cobon/presentation/screens/coupon_screen.dart';
+import 'package:tamkeen_mini_project/features/home/presentation/logic/bloc/home_bloc.dart';
+import 'package:tamkeen_mini_project/features/home/presentation/logic/bloc/home_event.dart';
+import 'package:tamkeen_mini_project/features/home/presentation/logic/bloc/home_state.dart';
 import 'package:tamkeen_mini_project/features/home/presentation/widgets/body/home_body.dart';
+import 'package:tamkeen_mini_project/features/home/presentation/wireframe/home_screen_wire_frame.dart';
 import 'package:tamkeen_mini_project/features/profile/presentation/screens/profile_screen.dart';
 
-class MainScreen extends StatefulWidget {
+class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
-
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
-class _MainScreenState extends State<MainScreen> {
-  int currentIndex = 0;
 
   final List<Widget> pages = const [
     HomeBody(),
@@ -24,44 +23,34 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: pages[currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        selectedItemColor: AppColors.textPrimary,
-        unselectedItemColor: Colors.grey,
-        backgroundColor: const Color.fromARGB(255, 7, 39, 36),
-        currentIndex: currentIndex,
-        onTap: (index) {
-          setState(() {
-            currentIndex = index;
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(
-              label: 'Home',
-              icon: Icon(
-                Icons.home,
-              )),
-          BottomNavigationBarItem(
-              label: 'Cart',
-              icon: Icon(
-                Icons.shopping_bag,
-              )),
-          BottomNavigationBarItem(
-              label: 'Favorite',
-              icon: Icon(
-                Icons.person,
-              )),
-          BottomNavigationBarItem(
-              label: 'Cobon',
-              icon: Icon(
-                Icons.discount_rounded,
-              )),
-        ],
-      ),
+    return BlocBuilder<HomeBloc, HomeState>(
+      builder: (context, state) {
+        if (state.status == RequestStatus.loading) {
+          return const Scaffold(
+            body: HomeWireframe(),
+          );
+        }
+
+        if (state.status == RequestStatus.failure) {
+          return Scaffold(
+            body: Center(
+              child: Text(state.errorMessage ?? ''),
+            ),
+          );
+        }
+
+        return Scaffold(
+          body: pages[state.currentIndex],
+          bottomNavigationBar: AppBottomNavBar(
+            currentIndex: state.currentIndex,
+            onTap: (index) {
+              context.read<HomeBloc>().add(
+                    ChangeBottomNavEvent(index),
+                  );
+            },
+          ),
+        );
+      },
     );
   }
 }

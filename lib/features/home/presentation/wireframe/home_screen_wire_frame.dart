@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 import 'package:tamkeen_mini_project/features/home/presentation/wireframe/widgets/banner_wireframe.dart';
 import 'package:tamkeen_mini_project/features/home/presentation/wireframe/widgets/bean_wireframe.dart';
+import 'package:tamkeen_mini_project/features/home/presentation/wireframe/widgets/bottom_nav_wireframe.dart';
 import 'package:tamkeen_mini_project/features/home/presentation/wireframe/widgets/coffe_wireframe.dart';
 import 'package:tamkeen_mini_project/features/home/presentation/wireframe/widgets/header_wireframe.dart';
+import 'package:tamkeen_mini_project/features/home/presentation/wireframe/widgets/search_box_wireframe.dart';
 import 'package:tamkeen_mini_project/features/home/presentation/wireframe/widgets/section_label_wireframe.dart';
 
 /// The screen itself — just lays the sections out in a scrollable
@@ -18,6 +20,7 @@ class HomeWireframe extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: HomeHeaderWireframe(),
       backgroundColor: AppColors.primary,
       body: SafeArea(
         child: SingleChildScrollView(
@@ -25,18 +28,23 @@ class HomeWireframe extends StatelessWidget {
           child: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              HomeHeaderWireframe(),
+              AppSearchBarWireframe(),
               SizedBox(height: 20),
               BannerWireframe(),
-              SectionLabelHomeWireframe(title: 'Coffee beans'),
+              SectionLabelHomeWireframe(
+                title: 'Coffee beans',
+              ),
               CoffeWireframe(),
               SizedBox(height: 28),
-              SectionLabelHomeWireframe(title: 'Cappuccino'),
+              SectionLabelHomeWireframe(
+                title: 'Cappuccino',
+              ),
               BeanWireframe(),
             ],
           ),
         ),
       ),
+      bottomNavigationBar: BottomNavBarWireframe(),
     );
   }
 }

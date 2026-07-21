@@ -20,6 +20,13 @@ class Validators {
     return null;
   }
 
+  static String? emailNotEmpty(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Email is required';
+    }
+    return null;
+  }
+
   static String? email(String? value) {
     if (value == null || value.isEmpty) return null;
     if (!_emailRegex.hasMatch(value.trim())) {

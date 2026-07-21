@@ -90,7 +90,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 controller: emailController,
                                 keyboardType: TextInputType.emailAddress,
                                 style: const TextStyle(color: Colors.white),
-                                validator: Validators.email,
+                                validator: Validators.emailNotEmpty,
                                 decoration: const InputDecoration(
                                   labelText: 'Email',
                                   labelStyle: TextStyle(color: Colors.white),

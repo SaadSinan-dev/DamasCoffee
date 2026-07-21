@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tamkeen_mini_project/core/color/app_colors.dart';
+import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 
 class AppSearchBar extends StatelessWidget {
   final TextEditingController controller;
@@ -17,7 +17,7 @@ class AppSearchBar extends StatelessWidget {
           hintStyle: const TextStyle(color: Colors.white54),
           prefixIcon: const Icon(Icons.search, color: Colors.white54),
           filled: true,
-          fillColor: AppColors.searchBox,
+          fillColor: AppColors.searchBox.withOpacity(0.5),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
             borderSide: BorderSide.none,

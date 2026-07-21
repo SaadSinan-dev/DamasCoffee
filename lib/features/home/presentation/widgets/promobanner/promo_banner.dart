@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tamkeen_mini_project/features/home/data/banner_data.dart';
 
 class PromoBanner extends StatelessWidget {
-  const PromoBanner({super.key});
+  const PromoBanner({super.key, required banners});
 
   @override
   Widget build(BuildContext context) {
@@ -10,11 +11,17 @@ class PromoBanner extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(18),
         child: Row(
-          children: const [
-            PromoBannerItem(),
-            SizedBox(width: 20),
-            PromoBannerItem(),
-          ],
+          children: List.generate(
+            promoBanners.length,
+            (index) => Padding(
+              padding: EdgeInsets.only(
+                right: index == promoBanners.length - 1 ? 0 : 20,
+              ),
+              child: PromoBannerItem(
+                banner: promoBanners[index],
+              ),
+            ),
+          ),
         ),
       ),
     );
@@ -22,7 +29,12 @@ class PromoBanner extends StatelessWidget {
 }
 
 class PromoBannerItem extends StatelessWidget {
-  const PromoBannerItem({super.key});
+  final PromoBannerData banner;
+
+  const PromoBannerItem({
+    super.key,
+    required this.banner,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -34,17 +46,17 @@ class PromoBannerItem extends StatelessWidget {
           height: 170,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            image: const DecorationImage(
+            image: DecorationImage(
               fit: BoxFit.fill,
-              image: AssetImage('assets/images/row1.png'),
+              image: AssetImage(banner.image),
             ),
           ),
         ),
-        const Padding(
-          padding: EdgeInsets.all(18),
+        Padding(
+          padding: const EdgeInsets.all(18),
           child: Text(
-            "Buy 2 \n Get 1 \n Free",
-            style: TextStyle(
+            banner.title,
+            style: const TextStyle(
               fontFamily: 'PT Sans',
               fontSize: 16,
               fontWeight: FontWeight.w400,

@@ -3,7 +3,7 @@ import 'package:tamkeen_mini_project/features/home/data/beans_data.dart';
 import 'package:tamkeen_mini_project/features/home/presentation/widgets/beancard/bean_card.dart';
 
 class BeansList extends StatelessWidget {
-  const BeansList({super.key});
+  const BeansList({super.key, required beans});
 
   @override
   Widget build(BuildContext context) {

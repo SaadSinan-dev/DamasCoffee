@@ -1,2 +1,26 @@
 code: https://github.com/SaadSinan-dev/DamasCoffee
-live:
+live:https://damascoffee.netlify.app/
+//////////////////////////////////////////////
+
+post:
+I have been working on a Flutter project called DamasCoffee, a coffee ordering app with a full flow: onboarding, login and registration with form validation, home screen browsing, product details, cart, checkout, and a coupons section.
+I built it using a feature based structure, where each part (home, cart, auth, checkout, coupons, profile) has its own folder with its own models, screens, and widgets. It made the project much easier to manage.
+The cart is actually functional. Quantity can be increased or decreased per item, and the total updates correctly in real time.
+Not everything is finished yet. The search and filters are not wired up, and the checkout total is still static. I prefer to be upfront about that.
+On a related note, at my current internship I am converting a Figma design into a Flutter app. It has been a great learning experience, helping me pay closer attention to spacing, alignment, and small UI details, and improving how I translate a design into clean Flutter code.
+Still learning and still building.
+#Flutter #MobileDevelopment #SoftwareEngineering #Internship
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+اشتغلت بالفترة الأخيرة على مشروع Flutter اسمه DamasCoffee، وهو تطبيق لطلب القهوة فيه رحلة استخدام كاملة، من شاشات البداية، وتسجيل الدخول وإنشاء الحساب مع التحقق من صحة البيانات، لواجهة التطبيق الرئيسية، وصفحات تفاصيل المنتجات، والسلة، وإتمام الطلب، وقسم خاص بالكوبونات.
+
+بنيت المشروع باستخدام Feature-Based Structure، بحيث كل جزء من التطبيق مثل الصفحة الرئيسية، والسلة، والمصادقة، وإتمام الطلب، والكوبونات، والملف الشخصي، له مجلد خاص فيه يحتوي على الـ Models والـ Screens والـ Widgets الخاصة فيه. هالطريقة خلت إدارة المشروع وتنظيمه أسهل بكتير.
+
+السلة شغالة بشكل فعلي، وبقدر زيد أو نقص الكمية لكل منتج، والمجموع النهائي بيتحدث مباشرة.
+
+لسا في شغلات ما خلصتها، مثل البحث والفلاتر، ولسا المجموع النهائي بصفحة الدفع ثابت وما صار ديناميكي. بحب أكون واضح بهي الأمور.
+
+وبنفس الوقت، خلال تدريبي الحالي بالشركة، التاسك المطلوب مني هو تحويل تصميم من Figma إلى تطبيق Flutter. كانت تجربة مفيدة جداً لأنها خلتني ركز أكتر على المسافات والمحاذاة والتفاصيل الصغيرة بالواجهة، وكمان حسنت طريقتي بتحويل التصميم إلى كود Flutter مرتب ونظيف.
+
+لسا عم أتعلم، ولسا عم أبني مشاريع وأطور مهاراتي.
+
+#Flutter #MobileDevelopment #SoftwareEngineering #Internship

@@ -4,6 +4,7 @@
 *.pyc
 *.swp
 .DS_Store
+url.txt
 .atom/
 .build/
 .buildlog/

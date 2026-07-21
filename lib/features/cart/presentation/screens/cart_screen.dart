@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tamkeen_mini_project/core/color/app_colors.dart';
+import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 import 'package:tamkeen_mini_project/core/routing/app_routes.dart';
 import 'package:tamkeen_mini_project/features/cart/data/cart_data.dart';
 import 'package:tamkeen_mini_project/features/cart/presentation/widgets/cart_card.dart';

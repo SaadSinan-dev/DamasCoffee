@@ -7,6 +7,7 @@ import 'package:tamkeen_mini_project/features/home/data/coffee_data.dart';
 import 'package:tamkeen_mini_project/features/home/presentation/screens/beans_details_screen.dart';
 import 'package:tamkeen_mini_project/features/home/presentation/screens/coffee_details_screen.dart';
 import 'package:tamkeen_mini_project/features/home/presentation/screens/main_screen.dart';
+import 'package:tamkeen_mini_project/features/home/presentation/wireframe/home_screen_wire_frame.dart';
 import 'package:tamkeen_mini_project/features/spalsh/presentation/screens/firstslide/first_screen.dart';
 import 'package:tamkeen_mini_project/features/spalsh/presentation/screens/secondslide/second_screen.dart';
 import 'package:tamkeen_mini_project/features/spalsh/presentation/screens/thirdslide/third_screen.dart';
@@ -20,6 +21,7 @@ class AppRoutes {
   static const String login = '/login';
   static const String register = '/register';
   static const String home = '/home';
+  static const String homewireframe = '/homewireframe';
   static const String checkout = '/checkout';
   static const String coffeedetails = '/coffeedetails';
   static const String beansdetails = '/beansdetails';
@@ -32,6 +34,7 @@ class AppRoutes {
     checkout: (context) => const CheckoutScreen(),
     register: (context) => const RegisterScreen(),
     home: (context) => const MainScreen(),
+    homewireframe: (context) => const HomeWireframe(),
     coffeedetails: (context) {
       final args = ModalRoute.of(context)!.settings.arguments;
       if (args is CoffeeProduct) {

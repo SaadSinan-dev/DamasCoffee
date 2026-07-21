@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tamkeen_mini_project/core/color/app_colors.dart';
+import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 import 'package:tamkeen_mini_project/core/routing/app_routes.dart';
 
 class SplashScreen1 extends StatelessWidget {

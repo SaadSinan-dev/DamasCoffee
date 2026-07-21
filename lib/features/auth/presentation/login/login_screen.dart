@@ -1,7 +1,7 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:tamkeen_mini_project/core/color/app_colors.dart';
 import 'package:tamkeen_mini_project/core/routing/app_routes.dart';
+import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -202,7 +202,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               if (formKey.currentState!.validate()) {
                                 Navigator.pushReplacementNamed(
                                   context,
-                                  AppRoutes.home,
+                                  AppRoutes.homewireframe,
                                 );
                               }
                             },

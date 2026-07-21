@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:tamkeen_mini_project/core/color/app_colors.dart';
+import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 import 'package:tamkeen_mini_project/features/home/data/beans_data.dart';
 import 'package:tamkeen_mini_project/features/home/presentation/widgets/filter/size_filter.dart';
 

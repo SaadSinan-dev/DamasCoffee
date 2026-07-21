@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tamkeen_mini_project/core/color/app_colors.dart';
+import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 import 'package:tamkeen_mini_project/features/cobon/data/coupon_data.dart';
 import 'package:tamkeen_mini_project/features/cobon/presentation/widgets/coupon_card.dart';
 import 'package:tamkeen_mini_project/features/cobon/presentation/widgets/custom_card.dart';
 import 'package:tamkeen_mini_project/features/cobon/presentation/widgets/header.dart';
-import 'package:tamkeen_mini_project/features/home/presentation/widgets/body/home_body.dart';
+import 'package:tamkeen_mini_project/features/cobon/presentation/widgets/section_label.dart';
 
 class CouponScreen extends StatelessWidget {
   const CouponScreen({super.key});

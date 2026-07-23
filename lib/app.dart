@@ -43,7 +43,7 @@ class App extends StatelessWidget {
                   fontFamily: locale.languageCode == 'ar' ? 'ElMessiri' : 'IBM',
                 ),
                 debugShowCheckedModeBanner: false,
-                initialRoute: AppRoutes.splash1,
+                initialRoute: AppRoutes.adminlogin,
                 onGenerateRoute: AppRoutes.onGenerateRoute,
                 locale: locale,
                 supportedLocales: AppLocalizations.supportedLocales,

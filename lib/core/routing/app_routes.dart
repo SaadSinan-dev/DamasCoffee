@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tamkeen_mini_project/core/routing/app_transitions.dart';
+import 'package:tamkeen_mini_project/features/admin/presentation/screens/admin_login_screen.dart';
+import 'package:tamkeen_mini_project/features/admin/presentation/screens/admin_screen.dart';
 import 'package:tamkeen_mini_project/features/auth/presentation/login/login_screen.dart';
 import 'package:tamkeen_mini_project/features/auth/presentation/register/register_screen.dart';
 import 'package:tamkeen_mini_project/features/checkout/presentation/screens/checkout_screen.dart';
@@ -26,9 +28,18 @@ class AppRoutes {
   static const String checkout = '/checkout';
   static const String coffeedetails = '/coffeedetails';
   static const String beansdetails = '/beansdetails';
-
+  static const String admin = '/admin';
+  static const String adminlogin = '/adminlogin';
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case admin:
+        return AppTransitions.slide(
+          AdminScreen(),
+        );
+      case adminlogin:
+        return AppTransitions.slide(
+          const AdminLoginScreen(),
+        );
       case splash1:
         return AppTransitions.slide(
           const SplashScreen1(),

@@ -253,7 +253,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             child: Text(
                               'Create Account',
                               style: TextStyle(
-                                fontFamily: 'Inter',
                                 fontSize: 18.sp,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -281,7 +280,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             child: Text(
                               'Already have an account? Login',
                               style: TextStyle(
-                                fontFamily: 'Inter',
                                 fontSize: 16.sp,
                                 fontWeight: FontWeight.w500,
                               ),

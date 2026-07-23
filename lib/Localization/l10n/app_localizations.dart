@@ -95,17 +95,227 @@ abstract class AppLocalizations {
     Locale('en')
   ];
 
-  /// No description provided for @chooselanguage.
+  /// No description provided for @profile.
   ///
   /// In en, this message translates to:
-  /// **'Choose Language'**
-  String get chooselanguage;
+  /// **'Best Coffee For You'**
+  String get profile;
 
-  /// No description provided for @title.
+  /// No description provided for @search.
   ///
   /// In en, this message translates to:
-  /// **'Wellcome to my app'**
-  String get title;
+  /// **'Find Your Coffee...'**
+  String get search;
+
+  /// No description provided for @all.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get all;
+
+  /// No description provided for @cappuccino.
+  ///
+  /// In en, this message translates to:
+  /// **'Cappuccino'**
+  String get cappuccino;
+
+  /// No description provided for @espresso.
+  ///
+  /// In en, this message translates to:
+  /// **'Espresso'**
+  String get espresso;
+
+  /// No description provided for @americano.
+  ///
+  /// In en, this message translates to:
+  /// **'Americano'**
+  String get americano;
+
+  /// No description provided for @macchiato.
+  ///
+  /// In en, this message translates to:
+  /// **'Macchiato'**
+  String get macchiato;
+
+  /// No description provided for @latte.
+  ///
+  /// In en, this message translates to:
+  /// **'Latte'**
+  String get latte;
+
+  /// No description provided for @buy2Get1Free.
+  ///
+  /// In en, this message translates to:
+  /// **'Buy 2\nGet 1\nFree'**
+  String get buy2Get1Free;
+
+  /// No description provided for @coffeeBeans.
+  ///
+  /// In en, this message translates to:
+  /// **'Coffee Beans'**
+  String get coffeeBeans;
+
+  /// No description provided for @robustaBeans.
+  ///
+  /// In en, this message translates to:
+  /// **'Robusta Beans'**
+  String get robustaBeans;
+
+  /// No description provided for @arabicaBeans.
+  ///
+  /// In en, this message translates to:
+  /// **'Arabica Beans'**
+  String get arabicaBeans;
+
+  /// No description provided for @libericaBeans.
+  ///
+  /// In en, this message translates to:
+  /// **'Liberica Beans'**
+  String get libericaBeans;
+
+  /// No description provided for @mediumRoasted.
+  ///
+  /// In en, this message translates to:
+  /// **'Medium Roasted'**
+  String get mediumRoasted;
+
+  /// No description provided for @lightRoasted.
+  ///
+  /// In en, this message translates to:
+  /// **'Light Roasted'**
+  String get lightRoasted;
+
+  /// No description provided for @darkRoasted.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark Roasted'**
+  String get darkRoasted;
+
+  /// No description provided for @italy.
+  ///
+  /// In en, this message translates to:
+  /// **'Italy'**
+  String get italy;
+
+  /// No description provided for @france.
+  ///
+  /// In en, this message translates to:
+  /// **'France'**
+  String get france;
+
+  /// No description provided for @fromAsia.
+  ///
+  /// In en, this message translates to:
+  /// **'From Asia'**
+  String get fromAsia;
+
+  /// No description provided for @fromAfrica.
+  ///
+  /// In en, this message translates to:
+  /// **'From Africa'**
+  String get fromAfrica;
+
+  /// No description provided for @fromMiddleEast.
+  ///
+  /// In en, this message translates to:
+  /// **'From Middle East'**
+  String get fromMiddleEast;
+
+  /// No description provided for @cappuccinoDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'A classic Italian coffee drink made with equal parts espresso, steamed milk, and milk foam. Rich and creamy with a bold espresso base, perfect for a morning boost.'**
+  String get cappuccinoDescription;
+
+  /// No description provided for @latteDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'A smooth and mild coffee drink made with espresso and a generous amount of steamed milk. Its creamy texture and subtle flavor make it a favorite for coffee lovers worldwide.'**
+  String get latteDescription;
+
+  /// No description provided for @espressoDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'A concentrated form of coffee brewed by forcing hot water through finely ground coffee beans. Bold, intense, and full-bodied with a rich crema on top.'**
+  String get espressoDescription;
+
+  /// No description provided for @americanoDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'A rich espresso diluted with hot water, giving it a similar strength to drip coffee but with a different, more complex flavor. Smooth and less intense than straight espresso.'**
+  String get americanoDescription;
+
+  /// No description provided for @macchiatoDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'An espresso shot marked with a small amount of foamed milk. Strong and bold with just a touch of creaminess, offering a balanced coffee experience.'**
+  String get macchiatoDescription;
+
+  /// No description provided for @robustaDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Robusta beans are known for their strong, bold flavor with a slightly bitter taste. Grown at lower altitudes, they contain more caffeine than Arabica and produce a rich crema, making them ideal for espresso blends.'**
+  String get robustaDescription;
+
+  /// No description provided for @arabicaDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Arabica beans are the most popular coffee beans in the world. They offer a smooth, mild flavor with subtle sweetness and fruity notes. Grown at high altitudes, they are prized for their complex aroma and low bitterness.'**
+  String get arabicaDescription;
+
+  /// No description provided for @libericaDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Liberica beans are rare and unique, offering a full-bodied flavor with a distinctive smoky and woody aroma. Their irregular shape and bold taste make them a favorite among coffee enthusiasts looking for something different.'**
+  String get libericaDescription;
+
+  /// No description provided for @weight250.
+  ///
+  /// In en, this message translates to:
+  /// **'250 g'**
+  String get weight250;
+
+  /// No description provided for @weight500.
+  ///
+  /// In en, this message translates to:
+  /// **'500 g'**
+  String get weight500;
+
+  /// No description provided for @weight1000.
+  ///
+  /// In en, this message translates to:
+  /// **'1000 g'**
+  String get weight1000;
+
+  /// No description provided for @description.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get description;
+
+  /// No description provided for @size.
+  ///
+  /// In en, this message translates to:
+  /// **'Size'**
+  String get size;
+
+  /// No description provided for @price.
+  ///
+  /// In en, this message translates to:
+  /// **'Price'**
+  String get price;
+
+  /// No description provided for @addToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to Cart'**
+  String get addToCart;
+
+  /// No description provided for @addedToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Added to Cart!'**
+  String get addedToCart;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

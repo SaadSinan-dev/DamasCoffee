@@ -37,7 +37,7 @@ class SplashScreen2 extends StatelessWidget {
                       Text(
                         'sip',
                         style: TextStyle(
-                            fontFamily: 'Inter',
+
                             fontWeight: FontWeight.w500,
                             fontSize: 24.sp,
                             color: AppColors.textPrimary),

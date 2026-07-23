@@ -8,9 +8,9 @@ class SectionLabelHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: Alignment.centerLeft,
+      alignment: AlignmentDirectional.centerStart,
       child: Padding(
-        padding: EdgeInsets.all(20).r,
+        padding: EdgeInsets.symmetric(horizontal: 34, vertical: 20).r,
         child: Text(
           title,
           style: TextStyle(

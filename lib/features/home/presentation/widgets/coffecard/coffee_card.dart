@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tamkeen_mini_project/Localization/l10n/app_localizations.dart';
 import 'package:tamkeen_mini_project/core/routing/app_routes.dart';
 import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 import 'package:tamkeen_mini_project/features/home/data/coffee_data.dart';
@@ -14,13 +15,14 @@ class CoffeeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, AppRoutes.coffeedetails,
             arguments: coffee);
       },
       child: Stack(
-        alignment: Alignment.topCenter,
+        alignment: AlignmentDirectional.topCenter,
         children: [
           Container(
             width: 150.w,
@@ -89,9 +91,9 @@ class CoffeeCard extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.only(left: 14).r,
+                padding: EdgeInsetsDirectional.only(start: 14),
                 child: Text(
-                  coffee.name,
+                  l10n.cappuccino,
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 14.sp,
@@ -101,9 +103,9 @@ class CoffeeCard extends StatelessWidget {
               ),
               SizedBox(height: 4.h),
               Padding(
-                padding: EdgeInsets.only(left: 14).r,
+                padding: EdgeInsetsDirectional.only(start: 14),
                 child: Text(
-                  coffee.roastLevel,
+                  l10n.darkRoasted,
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 10.sp,

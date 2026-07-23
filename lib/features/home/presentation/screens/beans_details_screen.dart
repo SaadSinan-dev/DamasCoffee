@@ -2,9 +2,42 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tamkeen_mini_project/Localization/l10n/app_localizations.dart';
 import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 import 'package:tamkeen_mini_project/features/home/data/beans_data.dart';
 import 'package:tamkeen_mini_project/features/home/presentation/widgets/filter/size_filter.dart';
+
+String localizedFromKey(BuildContext context, String key) {
+  final l10n = AppLocalizations.of(context)!;
+  switch (key) {
+    case 'robustaBeans':
+      return l10n.robustaBeans;
+    case 'arabicaBeans':
+      return l10n.arabicaBeans;
+    case 'libericaBeans':
+      return l10n.libericaBeans;
+    case 'mediumRoasted':
+      return l10n.mediumRoasted;
+    case 'lightRoasted':
+      return l10n.lightRoasted;
+    case 'darkRoasted':
+      return l10n.darkRoasted;
+    case 'fromAsia':
+      return l10n.fromAsia;
+    case 'fromAfrica':
+      return l10n.fromAfrica;
+    case 'fromMiddleEast':
+      return l10n.fromMiddleEast;
+    case 'robustaDescription':
+      return l10n.robustaDescription;
+    case 'arabicaDescription':
+      return l10n.arabicaDescription;
+    case 'libericaDescription':
+      return l10n.libericaDescription;
+    default:
+      return key;
+  }
+}
 
 class BeansDetailsScreen extends StatefulWidget {
   final BeanProduct bean;
@@ -180,7 +213,7 @@ class _BlurredInfoCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _BeanInfo(bean: bean),
-              _BeanBadges(roastLevel: bean.roastLevel),
+              _BeanBadges(roastLevel: bean.roastLevelKey),
             ],
           ),
         ),
@@ -199,7 +232,7 @@ class _BeanInfo extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          bean.name,
+          localizedFromKey(context, bean.nameKey),
           style: TextStyle(
             color: Colors.white,
             fontSize: 22.sp,
@@ -208,7 +241,7 @@ class _BeanInfo extends StatelessWidget {
         ),
         SizedBox(height: 4.h),
         Text(
-          bean.from,
+          localizedFromKey(context, bean.fromKey),
           style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 12),
         ),
         SizedBox(height: 22.h),
@@ -247,7 +280,7 @@ class _BeanBadges extends StatelessWidget {
           ],
         ),
         SizedBox(height: 12.h),
-        _LabelBadge(label: roastLevel),
+        _LabelBadge(label: localizedFromKey(context, roastLevel)),
       ],
     );
   }
@@ -309,6 +342,7 @@ class _DetailsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(24).r,
@@ -316,10 +350,10 @@ class _DetailsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _SectionLabel(title: 'Description'),
+          _SectionLabel(title: l10n.description),
           SizedBox(height: 12.h),
           Text(
-            bean.description,
+            localizedFromKey(context, bean.descriptionKey),
             style: TextStyle(
               color: Colors.white.withOpacity(0.8),
               fontSize: 14.sp,
@@ -327,7 +361,7 @@ class _DetailsSection extends StatelessWidget {
             ),
           ),
           SizedBox(height: 18.h),
-          _SectionLabel(title: 'Size'),
+          _SectionLabel(title: l10n.size),
           SizedBox(height: 16.h),
           SizeFilter(),
           SizedBox(height: 24.h),
@@ -362,6 +396,7 @@ class _PriceAndCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -369,7 +404,7 @@ class _PriceAndCart extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Price',
+              l10n.price,
               style: TextStyle(color: Colors.white70, fontSize: 16.sp),
             ),
             Row(
@@ -409,15 +444,15 @@ class _PriceAndCart extends StatelessWidget {
               SnackBar(
                 content: Row(
                   children: [
-                    Icon(Icons.shopping_cart, color: AppColors.primary),
+                    Icon(Icons.shopping_cart, color: AppColors.textPrimary),
                     SizedBox(width: 8.w),
                     Text(
-                      "Added to Cart!",
-                      style: TextStyle(color: AppColors.primary),
+                      l10n.addedToCart,
+                      style: TextStyle(color: AppColors.textPrimary),
                     ),
                   ],
                 ),
-                backgroundColor: AppColors.textPrimary,
+                backgroundColor: AppColors.primary,
                 duration: Duration(seconds: 2),
                 behavior: SnackBarBehavior.floating,
                 shape: RoundedRectangleBorder(
@@ -427,7 +462,7 @@ class _PriceAndCart extends StatelessWidget {
             );
           },
           child: Text(
-            "Add to Cart",
+            l10n.addToCart,
             style: TextStyle(
                 fontWeight: FontWeight.w600,
                 fontSize: 16.sp,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tamkeen_mini_project/core/routing/app_transitions.dart';
 import 'package:tamkeen_mini_project/features/auth/presentation/login/login_screen.dart';
 import 'package:tamkeen_mini_project/features/auth/presentation/register/register_screen.dart';
 import 'package:tamkeen_mini_project/features/checkout/presentation/screens/checkout_screen.dart';
@@ -26,34 +27,90 @@ class AppRoutes {
   static const String coffeedetails = '/coffeedetails';
   static const String beansdetails = '/beansdetails';
 
-  static Map<String, WidgetBuilder> routes = {
-    splash1: (context) => const SplashScreen1(),
-    splash2: (context) => const SplashScreen2(),
-    splash3: (context) => const SplashScreen3(),
-    login: (context) => const LoginScreen(),
-    checkout: (context) => const CheckoutScreen(),
-    register: (context) => const RegisterScreen(),
-    home: (context) => const MainScreen(),
-    homewireframe: (context) => const HomeWireframe(),
-    coffeedetails: (context) {
-      final args = ModalRoute.of(context)!.settings.arguments;
-      if (args is CoffeeProduct) {
-        return CoffeeDetailsScreen(coffee: args);
-      }
-      return const Scaffold(
-        body: Center(child: Text('Error: Product data not found')),
-      );
-    },
-    beansdetails: (context) {
-      final args = ModalRoute.of(context)!.settings.arguments;
+  static Route<dynamic> onGenerateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case splash1:
+        return AppTransitions.slide(
+          const SplashScreen1(),
+        );
 
-      if (args is BeanProduct) {
-        return BeansDetailsScreen(bean: args);
-      }
+      case splash2:
+        return AppTransitions.slide(
+          const SplashScreen2(),
+        );
 
-      return const Scaffold(
-        body: Center(child: Text('Error: Product data not found')),
-      );
-    },
-  };
+      case splash3:
+        return AppTransitions.slide(
+          const SplashScreen3(),
+        );
+
+      case login:
+        return AppTransitions.fade(
+          const LoginScreen(),
+        );
+
+      case register:
+        return AppTransitions.slide(
+          const RegisterScreen(),
+        );
+
+      case home:
+        return AppTransitions.fade(
+          const MainScreen(),
+        );
+
+      case homewireframe:
+        return AppTransitions.fade(
+          const HomeWireframe(),
+        );
+
+      case checkout:
+        return AppTransitions.slide(
+          const CheckoutScreen(),
+        );
+
+      case coffeedetails:
+        final args = settings.arguments;
+
+        if (args is CoffeeProduct) {
+          return AppTransitions.slide(
+            CoffeeDetailsScreen(coffee: args),
+          );
+        }
+
+        return MaterialPageRoute(
+          builder: (_) => const Scaffold(
+            body: Center(
+              child: Text('Error: Product data not found'),
+            ),
+          ),
+        );
+
+      case beansdetails:
+        final args = settings.arguments;
+
+        if (args is BeanProduct) {
+          return AppTransitions.slide(
+            BeansDetailsScreen(bean: args),
+          );
+        }
+
+        return MaterialPageRoute(
+          builder: (_) => const Scaffold(
+            body: Center(
+              child: Text('Error: Product data not found'),
+            ),
+          ),
+        );
+
+      default:
+        return MaterialPageRoute(
+          builder: (_) => const Scaffold(
+            body: Center(
+              child: Text('Route not found'),
+            ),
+          ),
+        );
+    }
+  }
 }

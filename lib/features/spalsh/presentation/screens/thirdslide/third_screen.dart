@@ -32,7 +32,6 @@ class SplashScreen3 extends StatelessWidget {
                   Text(
                     'chafe ',
                     style: TextStyle(
-                        fontFamily: 'Inter',
                         fontWeight: FontWeight.w500,
                         fontSize: 24.sp,
                         color: AppColors.textPrimary),
@@ -40,7 +39,6 @@ class SplashScreen3 extends StatelessWidget {
                   Text(
                     'will make you smile :) ',
                     style: TextStyle(
-                        fontFamily: 'Inter',
                         fontWeight: FontWeight.w500,
                         fontSize: 24.sp,
                         color: AppColors.secondary),

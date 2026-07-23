@@ -12,6 +12,7 @@ class FilterChips extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final filters = getFilters(context);
     return Padding(
       padding: EdgeInsets.only(top: 16).r,
       child: SingleChildScrollView(
@@ -39,7 +40,6 @@ class FilterChips extends StatelessWidget {
                             isSelected ? AppColors.textPrimary : Colors.white60,
                         fontWeight:
                             isSelected ? FontWeight.bold : FontWeight.normal,
-                        fontFamily: 'Inter',
                         fontSize: 14.sp,
                       ),
                     ),

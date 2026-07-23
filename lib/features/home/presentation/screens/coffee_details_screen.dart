@@ -2,9 +2,48 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tamkeen_mini_project/Localization/l10n/app_localizations.dart';
 import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 import 'package:tamkeen_mini_project/features/home/data/coffee_data.dart';
 import 'package:tamkeen_mini_project/features/home/presentation/widgets/filter/size_filter.dart';
+
+String localizedFromKey(BuildContext context, String key) {
+  final l10n = AppLocalizations.of(context)!;
+  switch (key) {
+    case 'cappuccino':
+      return l10n.cappuccino;
+    case 'espresso':
+      return l10n.espresso;
+    case 'americano':
+      return l10n.americano;
+    case 'macchiato':
+      return l10n.macchiato;
+    case 'latte':
+      return l10n.latte;
+    case 'mediumRoasted':
+      return l10n.mediumRoasted;
+    case 'lightRoasted':
+      return l10n.lightRoasted;
+    case 'darkRoasted':
+      return l10n.darkRoasted;
+    case 'italy':
+      return l10n.italy;
+    case 'france':
+      return l10n.france;
+    case 'cappuccinoDescription':
+      return l10n.cappuccinoDescription;
+    case 'latteDescription':
+      return l10n.latteDescription;
+    case 'espressoDescription':
+      return l10n.espressoDescription;
+    case 'americanoDescription':
+      return l10n.americanoDescription;
+    case 'macchiatoDescription':
+      return l10n.macchiatoDescription;
+    default:
+      return key;
+  }
+}
 
 class CoffeeDetailsScreen extends StatefulWidget {
   final CoffeeProduct coffee;
@@ -180,7 +219,7 @@ class _BlurredInfoCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _CoffeeInfo(coffee: coffee),
-              _CoffeeBadges(roastLevel: coffee.roastLevel),
+              _CoffeeBadges(roastLevel: coffee.roastLevelKey),
             ],
           ),
         ),
@@ -199,7 +238,7 @@ class _CoffeeInfo extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          coffee.name,
+          localizedFromKey(context, coffee.nameKey),
           style: TextStyle(
             color: Colors.white,
             fontSize: 22.sp,
@@ -208,7 +247,7 @@ class _CoffeeInfo extends StatelessWidget {
         ),
         SizedBox(height: 4.h),
         Text(
-          coffee.from,
+          localizedFromKey(context, coffee.fromKey),
           style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 12),
         ),
         SizedBox(height: 22.h),
@@ -247,7 +286,7 @@ class _CoffeeBadges extends StatelessWidget {
           ],
         ),
         SizedBox(height: 12.h),
-        _LabelBadge(label: roastLevel),
+        _LabelBadge(label: localizedFromKey(context, roastLevel)),
       ],
     );
   }
@@ -308,6 +347,7 @@ class _DetailsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(24).r,
@@ -315,10 +355,10 @@ class _DetailsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const _SectionLabel(title: 'Description'),
+          _SectionLabel(title: l10n.description),
           SizedBox(height: 12.h),
           Text(
-            coffee.description,
+            localizedFromKey(context, coffee.descriptionKey),
             style: TextStyle(
               color: Colors.white.withOpacity(0.8),
               fontSize: 14.sp,
@@ -326,7 +366,7 @@ class _DetailsSection extends StatelessWidget {
             ),
           ),
           SizedBox(height: 18.h),
-          _SectionLabel(title: 'Size'),
+          _SectionLabel(title: l10n.size),
           SizedBox(height: 16.h),
           SizeFilter(),
           SizedBox(height: 24.h),
@@ -361,6 +401,7 @@ class _PriceAndCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -368,7 +409,7 @@ class _PriceAndCart extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Price',
+              l10n.price,
               style: TextStyle(color: Colors.white70, fontSize: 16.sp),
             ),
             Row(
@@ -411,7 +452,7 @@ class _PriceAndCart extends StatelessWidget {
                     Icon(Icons.shopping_cart, color: AppColors.primary),
                     SizedBox(width: 8.w),
                     Text(
-                      "Added to Cart!",
+                      l10n.addedToCart,
                       style: TextStyle(color: AppColors.primary),
                     ),
                   ],
@@ -426,7 +467,7 @@ class _PriceAndCart extends StatelessWidget {
             );
           },
           child: Text(
-            "Add to Cart",
+            l10n.addToCart,
             style: TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: 16.sp,

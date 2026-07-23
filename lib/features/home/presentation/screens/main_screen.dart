@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tamkeen_mini_project/core/enums/request_status.dart';
-import 'package:tamkeen_mini_project/core/widgets/app_bottom_nav_bar.dart';
+import 'package:tamkeen_mini_project/core/widgets/bottomnav/app_bottom_nav_bar.dart';
 import 'package:tamkeen_mini_project/features/cart/presentation/screens/cart_screen.dart';
 import 'package:tamkeen_mini_project/features/cobon/presentation/screens/coupon_screen.dart';
 import 'package:tamkeen_mini_project/features/home/presentation/logic/bloc/home_bloc.dart';

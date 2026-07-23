@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tamkeen_mini_project/Localization/l10n/app_localizations.dart';
 import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 import 'package:tamkeen_mini_project/features/home/data/banner_data.dart';
 
@@ -11,13 +12,14 @@ class PromoBanner extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Padding(
-        padding: EdgeInsets.all(18).r,
+        padding: EdgeInsets.symmetric(horizontal: 6, vertical: 16).r,
         child: Row(
           children: List.generate(
             promoBanners.length,
             (index) => Padding(
               padding: EdgeInsets.only(
                 right: index == promoBanners.length - 1 ? 0 : 20,
+                left: index == promoBanners.length - 1 ? 0 : 20,
               ),
               child: PromoBannerItem(
                 banner: promoBanners[index],
@@ -40,8 +42,9 @@ class PromoBannerItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Stack(
-      alignment: Alignment.centerRight,
+      alignment: AlignmentDirectional.centerEnd,
       children: [
         Container(
           width: 270.w,
@@ -58,9 +61,8 @@ class PromoBannerItem extends StatelessWidget {
         Padding(
           padding: EdgeInsets.all(18).r,
           child: Text(
-            banner.title,
+            l10n.buy2Get1Free,
             style: TextStyle(
-              fontFamily: 'PT Sans',
               fontSize: 16.sp,
               fontWeight: FontWeight.w400,
               color: Colors.white,

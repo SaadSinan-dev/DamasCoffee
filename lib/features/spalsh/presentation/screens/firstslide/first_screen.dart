@@ -45,7 +45,6 @@ class SplashScreen1 extends StatelessWidget {
               Text(
                 'coffee first then talk !',
                 style: TextStyle(
-                    fontFamily: 'Inter',
                     fontWeight: FontWeight.w500,
                     fontSize: 24.sp,
                     color: AppColors.secondary),

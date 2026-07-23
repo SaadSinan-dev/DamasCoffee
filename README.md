@@ -1,105 +1,124 @@
-# ☕ DamasCoffee— A Flutter Coffee Ordering App
+# ☕ DamasCoffee — A Flutter Coffee Ordering App
 
-A clean, feature-based Flutter application for browsing and ordering coffee and coffee beans, built with a scalable project architecture and a fully custom, hand-crafted UI.
-
-This project was built as a hands-on mini project to apply core Flutter concepts — navigation, state management with `setState`, reusable widget composition, and a maintainable feature-based folder structure — in the context of a real, end-to-end mobile shopping flow.
+A feature-based Flutter application for browsing and ordering coffee and coffee beans, combining a hand-crafted UI with a Bloc-driven, layered architecture on the home feature.
 
 ---
 
 ## Overview
 
-Brew simulates the experience of a modern coffee shop app: users move through an onboarding flow, authenticate, browse a curated coffee and coffee-bean menu, view rich product detail pages, manage a shopping cart with live price calculation, and explore a loyalty coupon system — all wrapped in a warm, custom-themed interface built entirely with native Flutter widgets.
+DamasCoffee simulates the core experience of a modern coffee shop app: a user moves through onboarding, logs in, browses a coffee and coffee-bean menu, opens product detail pages, manages a shopping cart with live quantity and price updates, and explores a loyalty/coupon section — all within a custom-themed, coffee-shop-inspired interface built entirely with native Flutter widgets.
 
-The project intentionally avoids unnecessary third-party state management libraries, demonstrating that a well-organized `StatefulWidget` / `setState` approach, combined with a disciplined folder structure, is enough to keep a multi-screen app readable and maintainable.
+The project started as a `setState`-driven mini project and is now in the middle of an architectural migration: the **home feature** has been refactored into a proper data → domain → presentation layering with `flutter_bloc`, while the rest of the app (auth, cart, checkout, profile, coupons) still relies on `StatefulWidget` / `setState`. That mix is intentional and visible in the code — it reflects a real, incremental refactor rather than a finished, uniform codebase.
 
 ---
 
-## Key Features
+## Features
 
 **Onboarding**
-- Three-step animated splash/onboarding flow introducing the app before routing into authentication
+- Three-step splash/onboarding flow that routes into the login screen
 
 **Authentication**
-- Login and registration screens with form validation (required fields, email format check, password length, password confirmation matching)
-- International phone number input with an integrated country code picker
+- Login and registration screens with form validation (`Form` + `GlobalKey<FormState>`, inline validators for required fields, email format, password length, and password confirmation matching)
+- International phone number input using the `country_picker` package
 
 **Home & Product Browsing**
-- Custom header with a loyalty points badge
-- Search bar and category filter chips (Cappuccino, Espresso, Americano, Macchiato)
-- Horizontally scrollable promotional banner carousel
-- Horizontally scrollable coffee and coffee-bean product lists, each card showing image, name, roast level, rating, and price
+- Home data (banners, coffee list, bean list, filter labels) is fetched through a `HomeBloc`, which calls dedicated use cases (`GetBannersUseCase`, `GetBeansUseCase`, `GetCoffeesUseCase`) backed by a `HomeRepository` / `HomeRepositoryImpl`
+- A `RequestStatus` enum (`initial`, `loading`, `success`, `failure`, `empty`) drives the UI state
+- While data is loading, a dedicated **skeleton/wireframe screen** (`HomeWireframe`) is shown instead of the real content, with each section (header, search bar, banner, coffee list, bean list, bottom nav) rendering its own placeholder
+- On failure, a simple error message sourced from a centralized `ErrorMessages` constants file is shown
+- Header with a loyalty points badge, search bar, and category filter chips (UI only — see Current Limitations)
+- Horizontally scrollable promo banner carousel
+- Horizontally scrollable coffee and coffee-bean lists, each card showing image, name, roast level, rating, and price
+- Bottom navigation between Home, Cart, Profile, and Coupons is also driven through the `HomeBloc` (`ChangeBottomNavEvent`), not local widget state
 
 **Product Details**
-- Dedicated detail screens for both coffee drinks and coffee beans
-- Hero image header with a blurred glass-style info card (name, origin, rating, roast level)
+- Separate detail screens for coffee drinks and coffee beans, opened via named routes that pass the selected product as route arguments
 - Favorite toggle and a size/weight selector
 - "Add to Cart" confirmation feedback via an animated snackbar
 
 **Shopping Cart**
-- Cart screen listing all added items with image, roast level, and size
-- **Live quantity adjustment** (increment/decrement) with **real-time per-item and total price recalculation**
-- Dynamic total computed by folding over cart items (`price × quantity`)
+- Cart screen listing items from a static in-memory data source (`CartData`), rendered as `CartCard` widgets
+- Each cart card manages its own quantity state; incrementing or decrementing recalculates that item's subtotal and the cart's grand total in real time using `fold`
 
 **Checkout**
-- Payment method selection screen (Credit Card, Wallet, Apple Pay, Google Pay) with a styled card preview
+- Payment method selection screen (Wallet, iPhone/Apple Pay-style options, Google Pay) with a styled card preview, sourced from static data
 
 **Loyalty & Coupons**
-- Customer loyalty card showing collected "beans" points and a QR scan entry point
-- List of available discount coupons with percentage badges
+- Loyalty card UI showing a points balance and a QR-scan entry point
+- List of discount coupons rendered from static coupon data
 
 **Profile**
-- User profile screen with avatar, account details, a list of account options (Edit Profile, My Address, My Orders, Wishlist, Notifications, Change Password), and a logout action
+- Profile screen with avatar, account details, and a list of account options (Edit Profile, My Address, My Orders, Wishlist, Notifications, Change Password) sourced from static data
 
 **Internationalization (scaffolded)**
-- Flutter `gen-l10n` localization files generated for English and Arabic, ready to be wired into the app for full bilingual support
+- Flutter `gen-l10n` localization files exist for English and Arabic (`app_en.arb`, `app_ar.arb`, generated `AppLocalizations` classes), but they are not yet wired into `MaterialApp` — the app currently runs with an empty `localizationsDelegates` list
 
-**Custom Design System**
-- A single `AppColors` source of truth driving a consistent warm coffee-shop palette across every screen
+**Design System**
+- A single `AppColors` source of truth driving a consistent color palette across the app
 
 ---
+
+
 
 ## Tech Stack
 
 | Category | Technology |
 |---|---|
-| Framework | Flutter (Dart) |
-| State Management | Native `StatefulWidget` / `setState` |
+| Language | Dart |
+| Framework | Flutter |
+| State Management | `flutter_bloc` (home feature) + native `StatefulWidget` / `setState` (auth, cart, checkout, profile, coupons) |
 | Navigation | Flutter's built-in named-route `Navigator` |
-| Localization | `flutter_localizations`, `intl`, Flutter `gen-l10n` |
-| Third-Party Packages | `country_picker` |
-| UI | 100% custom widgets — no UI component libraries |
+| Localization | `flutter_localizations`, `intl`, Flutter `gen-l10n` (scaffolded, not yet active) |
+| Third-Party Packages | `flutter_bloc`, `country_picker` |
+| UI | Custom widgets — no UI component libraries |
+
+*(This repository contains the `lib/` source only, so exact package versions aren't listed here — see `pubspec.yaml` in the full project for pinned versions.)*
 
 ---
 
-## Project Architecture
+## Architecture
 
-The project follows a **feature-based architecture**, where each business capability lives in its own self-contained module under `lib/features/`. Every feature is internally split into:
+The app is organized as a **feature-based structure**, with the **home feature** additionally split into clear layers:
 
-- **`data/`** — plain Dart model classes and static datasets (e.g. `CoffeeProduct`, `CartItemModel`)
-- **`presentation/screens/`** — full-page widgets users navigate to
-- **`presentation/widgets/`** — smaller, reusable UI pieces scoped to that feature
+- **`data/`** — static datasets/models (`CoffeeProduct`, `BeanProduct`, `PromoBannerData`, etc.) and, for `home`, a `HomeRepository` interface with a `HomeRepositoryImpl` implementation that currently serves the static datasets asynchronously
+- **`domain/`** *(home feature only)* — use cases (`GetBannersUseCase`, `GetBeansUseCase`, `GetCoffeesUseCase`) that sit between the Bloc and the repository, each exposing a single `call()` method
+- **`presentation/`**
+  - `logic/bloc/` *(home only)* — `HomeBloc`, `HomeEvent`, `HomeState` implementing the Bloc pattern
+  - `screens/` — full-page widgets
+  - `widgets/` — smaller, reusable UI pieces scoped to that feature
+  - `wireframe/` *(home only)* — skeleton-loading widgets mirroring the real home layout, shown while `HomeBloc` is in a loading state
 
-This keeps each feature independent and easy to extend without creating tangled cross-feature dependencies, and it mirrors patterns commonly used in production Flutter codebases — even though this project, at its current stage, doesn't yet introduce a separate domain layer or networking/repository layer.
+Other features (`auth`, `cart`, `checkout`, `cobon`, `profile`) still follow a simpler `data/` + `presentation/` split without a domain layer or Bloc, using `setState` for local UI state.
 
-Shared, app-wide concerns (routing and color tokens) are isolated in `lib/core/`, so they can be reused by every feature without duplication.
+Shared, app-wide concerns — routing, color tokens, error message constants, and the `RequestStatus` enum — live in `lib/core/`, so they can be reused across features without duplication.
+
+This is not a full Clean Architecture implementation across the whole app; it's best described as a project mid-refactor, where one feature (`home`) demonstrates the intended target pattern (data/domain/presentation + Bloc) and the rest hasn't been migrated yet.
 
 ---
 
-## Code Structure
+## Project Structure
 
 ```
 lib/
 ├── main.dart                          # App entry point
-├── app.dart                           # MaterialApp setup, routes, locale config
+├── app.dart                           # MaterialApp setup, BlocProvider wiring, routes, locale config
 │
 ├── core/
 │   ├── routing/
 │   │   └── app_routes.dart            # Centralized named routes
-│   └── color/
-│       └── app_colors.dart            # App-wide color tokens
+│   ├── theme/color/
+│   │   └── app_colors.dart            # App-wide color tokens
+│   ├── enums/
+│   │   └── request_status.dart        # RequestStatus (initial/loading/success/failure/empty)
+│   ├── constants/
+│   │   └── error_messages.dart        # Centralized user-facing error strings
+│   ├── validators/
+│   │   └── app_validators.dart        # Reserved for shared form validators (currently empty)
+│   └── widgets/
+│       └── app_bottom_nav_bar.dart    # Shared bottom navigation bar
 │
 ├── Localization/
-│   └── l10n/                          # Generated EN/AR localization files
+│   └── l10n/                          # Generated EN/AR localization files (not yet wired in)
 │
 └── features/
     ├── spalsh/                        # Onboarding (3-slide splash flow)
@@ -111,26 +130,32 @@ lib/
     │       └── register/
     │
     ├── home/
-    │   ├── data/                      # coffee_data, beans_data, filters_data
+    │   ├── data/
+    │   │   ├── banner_data.dart, beans_data.dart, coffee_data.dart, filters_data.dart, label_data.dart
+    │   │   └── repositories/          # HomeRepository (interface) + HomeRepositoryImpl
+    │   ├── domain/
+    │   │   └── usecases/              # GetBannersUseCase, GetBeansUseCase, GetCoffeesUseCase
     │   └── presentation/
-    │       ├── screens/                # main_screen, coffee/beans details
-    │       └── widgets/                # header, searchbox, filter, coffecard, beancard, promobanner, body
+    │       ├── logic/bloc/            # HomeBloc, HomeEvent, HomeState
+    │       ├── screens/               # main_screen, coffee/beans details
+    │       ├── widgets/               # header, searchbox, filter, coffeecard, beancard, promobanner, body
+    │       └── wireframe/             # Skeleton-loading placeholder widgets
     │
     ├── cart/
-    │   ├── data/                       # cart_data.dart (CartItemModel)
+    │   ├── data/                      # cart_data.dart (CartItemModel)
     │   └── presentation/
     │       ├── screens/cart_screen.dart
-    │       └── widgets/cart_card.dart
+    │       └── widgets/cart_card.dart, cart_header_icon.dart
     │
     ├── checkout/
-    │   ├── data/checkout_data.dart     # Payment method options
+    │   ├── data/checkout_data.dart    # Payment method options
     │   └── presentation/screens/checkout_screen.dart
     │
-    ├── cobon/                          # Coupons & loyalty
+    ├── cobon/                         # Coupons & loyalty
     │   ├── data/coupon_data.dart
     │   └── presentation/
     │       ├── screens/coupon_screen.dart
-    │       └── widgets/                # coupon_card, custom_card, header, section_label
+    │       └── widgets/               # coupon_card, custom_card, header, section_label
     │
     └── profile/
         ├── data/profile_data.dart
@@ -139,22 +164,21 @@ lib/
 
 ---
 
-## How It Works
+## State Management
 
-1. **App launch** — `main.dart` boots the app via `App` (`app.dart`), which configures `MaterialApp` with named routes and sets the initial route to the first splash slide.
-2. **Onboarding** — the user is guided through three splash screens, each pushing a replacement route to the next, ending at the login screen.
-3. **Authentication** — `LoginScreen` and `RegisterScreen` use a `Form` + `GlobalKey<FormState>` to validate input client-side. On successful validation, the user is routed to `MainScreen`.
-4. **Main shell** — `MainScreen` holds a `BottomNavigationBar` and swaps between four pages (`HomeBody`, `CartScreen`, `ProfileScreen`, `CouponScreen`) by updating a local `currentIndex` state — no route stack changes, just instant tab switching.
-5. **Browsing** — `HomeBody` composes the header, search bar, filter chips, promo banner, and two horizontally scrollable product lists (`BeansList`, `CoffeeList`), both rendered from static, strongly-typed data models.
-6. **Product detail** — tapping a coffee or bean card pushes a named route (`coffeedetails` / `beansdetails`) carrying the selected product as route arguments, which the destination screen reads via `ModalRoute.of(context)!.settings.arguments`.
-7. **Cart** — `CartScreen` reads from `CartData.items` (a static in-memory list) and renders each as a `CartCard`. Each card owns its own quantity state; incrementing or decrementing immediately recalculates that item's subtotal and the cart's grand total using `fold`.
-8. **Checkout** — `CheckoutScreen` presents a styled card preview and a list of payment method options sourced from `checkout_data.dart`.
-9. **Coupons & loyalty** — `CouponScreen` displays a customer loyalty card (points balance) followed by a list of coupon cards rendered from `CouponData.coupons`.
-10. **Profile** — `ProfileScreen` renders static account information and a list of navigable account options.
+The **home feature** is the part of the app that uses `flutter_bloc`:
+
+- **Events** — `LoadHomeEvent` (fired once on app start, via `App`'s `BlocProvider`) and `ChangeBottomNavEvent(index)` (fired when the user taps a bottom nav item)
+- **State** — a single immutable `HomeState` holding `status`, `bottomNavStatus`, `banners`, `beans`, `coffees`, `labels`, `currentIndex`, and an optional `errorMessage`, updated via `copyWith`
+- **Business logic separation** — `HomeBloc` doesn't touch the data layer directly; it calls the three use cases, which in turn call `HomeRepository`. This keeps the Bloc focused on orchestrating loading/success/failure state rather than knowing where the data comes from
+- **UI rebuilding flow** — `MainScreen` wraps its body in a `BlocBuilder<HomeBloc, HomeState>`. Depending on `state.status`, it renders the `HomeWireframe` (loading), an error message (failure), or the actual page for `state.currentIndex` (success). The bottom navigation bar reads `state.currentIndex` and dispatches `ChangeBottomNavEvent` on tap instead of managing an index locally
+- Note: `_onLoadHome` in `HomeBloc` currently adds an artificial `Future.delayed(Duration(seconds: 5))` before fetching data — useful for demonstrating the loading/wireframe state during development
+
+All other features (auth, cart, checkout, profile, coupons) manage their own local UI state with `setState` inside `StatefulWidget`s — for example, `CartCard` owns its quantity state and recalculates totals locally with `fold`.
 
 ---
 
-## Installation & Setup
+## Installation
 
 ### Prerequisites
 - [Flutter SDK](https://docs.flutter.dev/get-started/install) installed and configured
@@ -174,34 +198,29 @@ flutter pub get
 flutter run
 ```
 
-> **Note:** This repository contains the `lib/` source directory. To run the project locally, place it inside a standard Flutter project (with a valid `pubspec.yaml` declaring `country_picker`, `flutter_localizations`, and the project's image assets under `assets/images/`) generated via `flutter create`.
+> **Note:** This repository contains the `lib/` source directory. To run the project locally, place it inside a standard Flutter project (with a valid `pubspec.yaml` declaring `flutter_bloc`, `country_picker`, `flutter_localizations`, and the project's image assets under `assets/images/`) generated via `flutter create`.
 
 ---
 
-## Screenshots
+## Development Notes
 
-> Screenshots coming soon.
-
-| Onboarding | Home | Product Details |
-|---|---|---|
-| *placeholder* | *placeholder* | *placeholder* |
-
-| Cart | Checkout | Coupons |
-|---|---|---|
-| *placeholder* | *placeholder* | *placeholder* |
+- Centralized `AppColors`, `AppRoutes`, and `ErrorMessages` keep styling, navigation, and user-facing error text in one place instead of scattered across screens
+- Text editing controllers in `StatefulWidget`s (e.g. login/register) are properly disposed in `dispose()`
+- The home feature's loading state is handled with a dedicated skeleton UI (`HomeWireframe` and its per-section wireframe widgets) rather than a single generic spinner, so the layout doesn't jump once real content arrives
+- Cart quantity management is a genuinely interactive feature backed by correct recalculation logic (`fold` over cart items for `price × quantity`), not just static UI
+- The `RequestStatus` enum and `HomeState.copyWith` pattern show a deliberate attempt at predictable, immutable state updates for the migrated feature
 
 ---
 
 ## Current Limitations
 
-In the interest of transparency, this is the current, honest state of a few screens:
-
-- **Search bar and filter chips** are interactive in the UI but do not yet filter the displayed product lists.
-- **Checkout total** is currently a static placeholder value rather than calculated from the live cart.
-- **Authentication** is client-side form validation only — there is no backend or persistence layer yet.
-- **Profile actions** (account options, logout) are present in the UI but not yet wired to functionality.
-
-These are natural, well-scoped next steps rather than architectural gaps — the underlying structure already supports adding them cleanly.
+- **Search bar and filter chips** on the home screen are interactive in the UI but do not yet filter the displayed product lists
+- **Checkout total** is currently static rather than calculated from the live cart
+- **Authentication** is client-side form validation only — there is no backend or persistence layer
+- **Profile actions** (account options, logout) are present in the UI but not yet wired to functionality
+- **Localization** files are generated but not yet connected to `MaterialApp`'s `localizationsDelegates`
+- **`app_validators.dart`** exists as a placeholder for shared validators but is currently empty — validation logic still lives inline in the login/register screens
+- Only the `home` feature has been migrated to the Bloc + domain/repository pattern; the rest of the app still uses `setState`
 
 ---
 
@@ -209,15 +228,14 @@ These are natural, well-scoped next steps rather than architectural gaps — the
 
 - Wire the search bar and filter chips into actual list filtering logic
 - Connect the cart total to the checkout screen for an accurate, dynamic payment summary
-- Introduce a backend (e.g. Firebase) for real authentication, persistent cart state, and order history
-- Activate the existing `gen-l10n` localization setup to ship full English/Arabic bilingual support
-- Migrate state management from `setState` to a more scalable solution (e.g. `Provider`, `Riverpod`, or `BLoC`) as the app grows
+- Introduce a backend (e.g. Firebase or a REST API) for real authentication, persistent cart state, and order history
+- Activate the existing `gen-l10n` localization setup for full English/Arabic support
+- Continue the migration of `auth`, `cart`, `checkout`, `cobon`, and `profile` from `setState` to the Bloc + domain/repository pattern already used in `home`
+- Move shared form validation logic into `app_validators.dart` instead of keeping it inline per screen
 - Implement the "My Orders," "Wishlist," and "Notifications" profile destinations
 
 ---
 
-## Why This Project Matters
+## Author
 
-This project demonstrates the ability to take a multi-screen mobile application from onboarding through checkout using a deliberate, scalable folder structure — not a single-file prototype. Every screen reflects attention to detail: consistent theming through a centralized color system, properly disposed controllers, validated forms, and at least one genuinely interactive feature (cart quantity management) backed by correct, real-time calculation logic.
-
-It reflects a developer who organizes code the way production teams expect, writes UI that doesn't cut corners on detail, and is honest about what's finished versus what's next — a combination that matters as much as raw feature count when evaluating engineering maturity.
+Built as a hands-on mini project to practice feature-based Flutter architecture, an incremental migration to `flutter_bloc`, and end-to-end mobile UI development — from onboarding through checkout.

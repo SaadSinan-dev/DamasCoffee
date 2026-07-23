@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tamkeen_mini_project/Localization/l10n/app_localizations.dart';
 import 'package:tamkeen_mini_project/core/routing/app_routes.dart';
 import 'package:tamkeen_mini_project/core/theme/color/app_colors.dart';
 import 'package:tamkeen_mini_project/features/home/data/beans_data.dart';
@@ -10,12 +11,13 @@ class BeanCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, AppRoutes.beansdetails, arguments: bean);
       },
       child: Stack(
-        alignment: Alignment.topCenter,
+        alignment: AlignmentDirectional.topCenter,
         children: [
           Container(
             width: 150.w,
@@ -39,9 +41,9 @@ class BeanCard extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 14),
+                padding: EdgeInsetsDirectional.only(start: 14.r),
                 child: Text(
-                  bean.name,
+                  l10n.arabicaBeans,
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 14.sp,
@@ -51,9 +53,9 @@ class BeanCard extends StatelessWidget {
               ),
               SizedBox(height: 4.h),
               Padding(
-                padding: EdgeInsets.only(left: 14).r,
+                padding: EdgeInsetsDirectional.only(start: 14.r),
                 child: Text(
-                  bean.roastLevel,
+                  l10n.mediumRoasted,
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 10.sp,

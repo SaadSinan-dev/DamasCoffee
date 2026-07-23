@@ -1,20 +1,20 @@
 class CoffeeProduct {
-  final String name;
-  final String roastLevel;
+  final String nameKey;
+  final String roastLevelKey;
   final double price;
   final String imagePath;
   final String rate;
-  final String from;
-  final String description;
+  final String fromKey;
+  final String descriptionKey;
 
   const CoffeeProduct({
-    required this.name,
+    required this.nameKey,
     required this.rate,
-    required this.roastLevel,
+    required this.roastLevelKey,
     required this.price,
     required this.imagePath,
-    required this.from,
-    required this.description,
+    required this.fromKey,
+    required this.descriptionKey,
   });
 
   String get formattedPrice => '\$${price.toStringAsFixed(2)}';
@@ -22,33 +22,30 @@ class CoffeeProduct {
 
 const List<CoffeeProduct> coffees = [
   CoffeeProduct(
-    name: 'Cappuccino',
-    roastLevel: 'Medium Roasted',
+    nameKey: 'cappuccino',
+    roastLevelKey: 'mediumRoasted',
     price: 4.50,
     imagePath: 'assets/images/cappuccino1.png',
     rate: '4.5',
-    from: 'Italy',
-    description:
-        'A classic Italian coffee drink made with equal parts espresso, steamed milk, and milk foam. Rich and creamy with a bold espresso base, perfect for a morning boost.',
+    fromKey: 'italy',
+    descriptionKey: 'cappuccinoDescription',
   ),
   CoffeeProduct(
-    name: 'Latte',
-    roastLevel: 'Light Roasted',
+    nameKey: 'latte',
+    roastLevelKey: 'lightRoasted',
     price: 3.99,
     imagePath: 'assets/images/cappuccino2.png',
     rate: '4.2',
-    from: 'France',
-    description:
-        'A smooth and mild coffee drink made with espresso and a generous amount of steamed milk. Its creamy texture and subtle flavor make it a favorite for coffee lovers worldwide.',
+    fromKey: 'france',
+    descriptionKey: 'latteDescription',
   ),
   CoffeeProduct(
-    name: 'Espresso',
-    roastLevel: 'Dark Roasted',
+    nameKey: 'espresso',
+    roastLevelKey: 'darkRoasted',
     price: 2.99,
     imagePath: 'assets/images/cappuccino1.png',
     rate: '4.1',
-    from: 'Italy',
-    description:
-        'A concentrated form of coffee brewed by forcing hot water through finely ground coffee beans. Bold, intense, and full-bodied with a rich crema on top.',
+    fromKey: 'italy',
+    descriptionKey: 'espressoDescription',
   ),
 ];

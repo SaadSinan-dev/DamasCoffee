@@ -11,7 +11,7 @@ class EmptyCart extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(
-            Icons.shopping_bag_outlined,
+            Icons.shopping_cart,
             color: Colors.white.withOpacity(0.3),
             size: 56.r,
           ),

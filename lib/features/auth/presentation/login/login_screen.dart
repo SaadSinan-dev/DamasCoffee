@@ -196,7 +196,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: Text(
                               'Login',
                               style: TextStyle(
-                                fontFamily: 'Inter',
                                 fontSize: 18.sp,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -227,7 +226,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: Text(
                               'Create Account',
                               style: TextStyle(
-                                fontFamily: 'Inter',
                                 fontSize: 18.sp,
                                 fontWeight: FontWeight.w500,
                               ),

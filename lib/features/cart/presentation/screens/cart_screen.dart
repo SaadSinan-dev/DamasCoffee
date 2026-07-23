@@ -149,7 +149,6 @@ class _CartScreenState extends State<CartScreen> {
                           style: TextStyle(
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w600,
-                            fontFamily: 'Inter',
                           ),
                         ),
                       ),

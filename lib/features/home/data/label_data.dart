@@ -1,16 +1,16 @@
 class HomeSectionLabel {
-  final String title;
+  final String titleKey;
 
   const HomeSectionLabel({
-    required this.title,
+    required this.titleKey,
   });
 }
 
 final List<HomeSectionLabel> homeSectionLabels = [
   const HomeSectionLabel(
-    title: 'Coffee beans',
+    titleKey: 'coffeeBeans',
   ),
   const HomeSectionLabel(
-    title: 'Cappuccino',
+    titleKey: 'cappuccino',
   ),
 ];
